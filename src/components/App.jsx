@@ -6,6 +6,8 @@ import { TodoTitle } from "./TodoTitle"
 import { TodoAdd } from "./TodoAdd"
 import { TodoList } from "./TodoList"
 
+import { Home } from "../atomicDesign/molecules/iconWithText/Home"
+
 export default function App() {
   const { 
           todoList,
@@ -72,6 +74,7 @@ export default function App() {
           </div>
         )
       })}
+      <Home/
     </>
   )
 }
