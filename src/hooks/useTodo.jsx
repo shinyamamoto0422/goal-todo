@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import uuid from "node-uuid";
+import {v4 as uuid} from "uuid";
 
 import * as todoData from "../apis/apiTodos";
 
@@ -25,7 +25,7 @@ export const useTodo = () => {
       })
       setTodoList(newTodoList);
     });
-  };
+  }; 
 
   const addTodoListItem = (todoContent) => {
     const newTodoItem = {

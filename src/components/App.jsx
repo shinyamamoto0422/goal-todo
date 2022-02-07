@@ -1,12 +1,10 @@
 import { useState, useEffect,useRef } from "react"
 import { useTodo } from "../hooks/useTodo"
 import db from "../firebase/firebase"
-import uuid from "node-uuid"
-import { collection, getDocs, onSnapshot } from "firebase/firestore"
+import {  collection, getDocs, onSnapshot } from "firebase/firestore"
 import { TodoTitle } from "./TodoTitle"
 import { TodoAdd } from "./TodoAdd"
 import { TodoList } from "./TodoList"
-
 
 export default function App() {
   const { 
@@ -68,7 +66,7 @@ export default function App() {
       />
       {todosData.map((todo) => {
         return (
-          <div key={uuid.v4()}>
+          <div key={todo.id}>
             <h1>{todo.title}</h1>
             <p>{todo.memo}</p>
           </div>

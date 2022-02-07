@@ -1,6 +1,4 @@
 import axios from "axios";
-import { collection } from "firebase/firestore";
-import db from "../firebase/firebase";
 
 const todoDataUrl = "http://localhost:3100/todos";
 
