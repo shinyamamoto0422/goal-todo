@@ -1,4 +1,4 @@
-export const textSizeBase = ({ children }) => {
+export const TextSizeBase = ({ children }) => {
     return (
         <p
             class="text-Base"

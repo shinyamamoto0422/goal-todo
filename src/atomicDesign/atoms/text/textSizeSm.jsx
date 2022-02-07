@@ -1,4 +1,4 @@
-export const textSizeSm = ({ children }) => {
+export const TextSizeSm = ({ children }) => {
     return (
         <p
             class="text-sm"

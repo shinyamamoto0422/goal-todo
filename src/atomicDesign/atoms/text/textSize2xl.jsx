@@ -1,4 +1,4 @@
-export const textSize2xl = ({ children }) => {
+export const TextSize2xl = ({ children }) => {
     return (
         <p
             class="text-2xl"
