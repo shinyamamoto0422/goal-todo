@@ -8,6 +8,10 @@ import { TodoList } from "./TodoList"
 import { FlagMarkType1 } from "../atomicDesign/atoms/flagMark/FlagMarkType1"
 
 import { Home } from "../atomicDesign/molecules/iconWithText/Home"
+import { Mylist } from "../atomicDesign/molecules/iconWithText/Mylist"
+import { Goal } from "../atomicDesign/molecules/iconWithText/Goal"
+import { Stats } from "../atomicDesign/molecules/iconWithText/Stats"
+import { Account } from "../atomicDesign/molecules/iconWithText/Account"
 
 export default function App() {
   const {
@@ -76,7 +80,11 @@ export default function App() {
           </div>
         )
       })}
-      <Home/
+      <Home/>
+      <Mylist/>
+      <Goal/>
+      <Stats/>
+      <Account/>
     </>
   )
 }
