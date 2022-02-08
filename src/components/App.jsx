@@ -13,9 +13,7 @@ import { Goal } from "../atomicDesign/molecules/iconWithText/Goal"
 import { Stats } from "../atomicDesign/molecules/iconWithText/Stats"
 import { Account } from "../atomicDesign/molecules/iconWithText/Account"
 import { NameTag } from "../atomicDesign/atoms/nameTag/NameTag"
-import { TextSize2xl } from "../atomicDesign/atoms/text/TextSize2xl"
-import { PriorityHigh } from "../atomicDesign/atoms/priority/PriorityHigh"
-import { NameTagWithAt } from "../atomicDesign/atoms/nameTag/NameTagWithAt"
+
 
 export default function App() {
   const {
@@ -56,10 +54,16 @@ export default function App() {
 
   return (
     <>
-      <div class="flex leading-10 w-56 h-8">
-        <PriorityHigh />
-        <FlagMarkType1>フラグ</FlagMarkType1>
+      <div class="bg-black1 w-32 h-screen">
+        <div class="ml-2">
+          <Home />
+          <Mylist />
+          <Goal />
+          <Stats />
+          <Account />
+        </div>
       </div>
+
       <NameTag taskName={"タスク名"} />
       <br />
       <TodoTitle title="Todo進捗管理" as="h1" />
@@ -93,12 +97,6 @@ export default function App() {
           </div>
         )
       })}
-      <TextSize2xl/>
-      <Home />
-      <Mylist />
-      <Goal />
-      <Stats />
-      <Account />
     </>
   )
 }
