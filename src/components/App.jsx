@@ -12,6 +12,9 @@ import { Mylist } from "../atomicDesign/molecules/iconWithText/Mylist"
 import { Goal } from "../atomicDesign/molecules/iconWithText/Goal"
 import { Stats } from "../atomicDesign/molecules/iconWithText/Stats"
 import { Account } from "../atomicDesign/molecules/iconWithText/Account"
+import { NameTag } from "../atomicDesign/atoms/nameTag/NameTag"
+import { PriorityHigh } from "../atomicDesign/atoms/priority/PriorityHigh"
+import { NameTagWithAt } from "../atomicDesign/atoms/nameTag/NameTagWithAt"
 
 export default function App() {
   const {
@@ -50,7 +53,13 @@ export default function App() {
 
   return (
     <>
-      <FlagMarkType1>フラグ</FlagMarkType1>
+      <div class="flex leading-10 w-56 h-8">
+        <NameTagWithAt listName={"りすとりすとりすと名"} />
+        <PriorityHigh />
+        <FlagMarkType1>フラグ</FlagMarkType1>
+      </div>
+      <NameTag taskName={"タスク名"} />
+      <br />
       <TodoTitle title="Todo進捗管理" as="h1" />
       <TodoAdd
         inputEl={inputEl}
@@ -80,11 +89,11 @@ export default function App() {
           </div>
         )
       })}
-      <Home/>
-      <Mylist/>
-      <Goal/>
-      <Stats/>
-      <Account/>
+      <Home />
+      <Mylist />
+      <Goal />
+      <Stats />
+      <Account />
     </>
   )
 }
