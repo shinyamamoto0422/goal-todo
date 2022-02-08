@@ -15,7 +15,6 @@ import { Account } from "../atomicDesign/molecules/iconWithText/Account"
 import { NameTag } from "../atomicDesign/atoms/nameTag/NameTag"
 import { TextSize2xl } from "../atomicDesign/atoms/text/TextSize2xl"
 import { PriorityHigh } from "../atomicDesign/atoms/priority/PriorityHigh"
-import { NameTagWithAt } from "../atomicDesign/atoms/nameTag/NameTagWithAt"
 
 export default function App() {
   const {
@@ -24,7 +23,7 @@ export default function App() {
     addTodoListItem,
     deleteTodoListItem
   } = useTodo();
-
+  
   const [todosData, setTodosData] = useState([]);
   useEffect(() => {
     // データベースからデータを取得する
@@ -48,7 +47,8 @@ export default function App() {
     if (inputEl.current.value === "") return;
     addTodoListItem(inputEl.current.value, tagEl.current.value);
     inputEl.current.value = "";
-  }
+    tagEl.current.value = "";
+  };
 
   const allList = todoList.filter(todo => todo);
   const incompletedList = todoList.filter(todo => !todo.done);
@@ -67,7 +67,8 @@ export default function App() {
       <TodoAdd
         inputEl={inputEl}
         tagEl={tagEl}
-        handleAddTodoListItem={handleAddTodoListItem} />
+        handleAddTodoListItem={handleAddTodoListItem} 
+      />
       <TodoTitle title={"すべて"} as="h2" />
       <TodoList
         todos={allList}
@@ -99,6 +100,7 @@ export default function App() {
       <Goal />
       <Stats />
       <Account />
+      <TextSize2xl />
     </>
   )
 }

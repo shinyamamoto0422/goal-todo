@@ -27,18 +27,17 @@ export const useTodo = () => {
     });
   }; 
 
-  const addTodoListItem = (title, taskName) => {
-    // ここに重要度・リスト名・期限を追加する
-    // 入力した内容がtodoContentに入る・handleAddTodoListItemから受け取る
+  const addTodoListItem = (title, tag) => {
     const newTodoItem = {
       content: title,
       id: uuid(),
       done: false,
-      taskName: taskName,
+      tag: tag,
       // priority: "2",
       // flagMark: false,
       // date: "2020-01-01"
     };
+    console.log(newTodoItem);
     return todoData.addTodoData(newTodoItem).then((addTodo) => {
       setTodoList([...todoList, addTodo]);
     })
