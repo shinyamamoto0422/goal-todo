@@ -16,6 +16,7 @@ import { Account } from "../atomicDesign/molecules/iconWithText/Account"
 import { NameTag } from "../atomicDesign/atoms/nameTag/NameTag"
 
 import Logo from "../assets/logo.svg"
+import { TaskName } from "../atomicDesign/atoms/TaskName"
 
 export default function App() {
   const {
@@ -56,7 +57,7 @@ export default function App() {
   const completeList = todoList.filter(todo => todo.done);
 
   return (
-    <div class="bg-black2">
+    <div class="bg-black2 flex">
       {/**サイドバー */}
       <div class="bg-black1 w-28 h-screen">
         <div class="ml-2 h-auto">
@@ -69,8 +70,39 @@ export default function App() {
         </div>
       </div>
 
-      {/**入力エリア */}
-      <div class="bg-red-300">
+      {/**まとめて画面左側に表示*/}
+      <div class="w-5/12">
+        {/**未完了エリア */}
+        <div class="bg-blue-300">
+          <TaskName>タスクネームたすくねーむ！？！？</TaskName>
+          <TodoTitle title="未完了" as="h2" />
+          <TodoList
+            todos={incompletedList}
+            deleteTodoListItem={deleteTodoListItem}
+            toggleTodoListItemStatus={toggleTodoListItemStatus} />
+        </div>
+
+        {/**完了エリア */}
+        <div class="bg-green-300">
+          <TodoTitle title="完了" as="h2" />
+          <TodoList
+            todos={completeList}
+            deleteTodoListItem={deleteTodoListItem}
+            toggleTodoListItemStatus={toggleTodoListItemStatus}
+          />
+          {todosData.map((todo) => {
+            return (
+              <div key={todo.id}>
+                <h1>{todo.title}</h1>
+                <p>{todo.memo}</p>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      {/**入力エリア 画面右側に表示 */}
+      <div class="bg-red-300 w-7/12">
         <NameTag taskName={"タスク名"} />
         <br />
         <TodoTitle title="Todo進捗管理" as="h1" />
@@ -88,32 +120,6 @@ export default function App() {
         />
       </div>
 
-      {/**未完了エリア */}
-      <div class="bg-blue-300">
-        <TodoTitle title="未完了" as="h2" />
-        <TodoList
-          todos={incompletedList}
-          deleteTodoListItem={deleteTodoListItem}
-          toggleTodoListItemStatus={toggleTodoListItemStatus} />
-      </div>
-
-      {/**完了エリア */}
-      <div class="bg-green-300">
-        <TodoTitle title="完了" as="h2" />
-        <TodoList
-          todos={completeList}
-          deleteTodoListItem={deleteTodoListItem}
-          toggleTodoListItemStatus={toggleTodoListItemStatus}
-        />
-        {todosData.map((todo) => {
-          return (
-            <div key={todo.id}>
-              <h1>{todo.title}</h1>
-              <p>{todo.memo}</p>
-            </div>
-          )
-        })}
-      </div>
     </div>
   )
 }
