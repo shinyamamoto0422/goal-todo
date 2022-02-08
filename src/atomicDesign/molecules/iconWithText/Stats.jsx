@@ -4,8 +4,8 @@ import { TextSizeXs } from "../../atoms/text/TextSizeXs.jsx"
 export const Stats = () => {
   return (
     <div class="flex items-center">
-      <IconStats/>
-      <TextSizeXs children="Stats"/>
+      <IconStats />
+      <p class="text-lg text-white2 mt-2 ml-1">Stats</p>
     </div>
   )
 }

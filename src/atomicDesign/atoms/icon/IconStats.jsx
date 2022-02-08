@@ -1,6 +1,8 @@
 import { ChartBarIcon } from '@heroicons/react/outline'
 export const IconStats = () => {
   return (
-    <ChartBarIcon class="w-8"/>
+    <div class="inline-block text-white2">
+      <ChartBarIcon class="w-7 mt-1" stroke="currentColor" />
+    </div>
   )
 };

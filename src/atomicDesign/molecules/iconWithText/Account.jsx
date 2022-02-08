@@ -1,11 +1,10 @@
 import { IconAccount } from "../../atoms/icon/IconAccount.jsx"
-import { TextSizeXs } from "../../atoms/text/TextSizeXs.jsx"
 
 export const Account = () => {
   return (
     <div class="flex items-center">
-      <IconAccount/>
-      <TextSizeXs children="Account"/>
+      <IconAccount />
+      <p class="text-lg text-white2 mt-2 ml-1">Account</p>
     </div>
   )
 }

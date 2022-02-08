@@ -1,6 +1,8 @@
 import { UserCircleIcon } from '@heroicons/react/outline'
 export const IconAccount = () => {
   return (
-    <UserCircleIcon class="w-8"/>
+    <div class="inline-block text-white2">
+      <UserCircleIcon class="w-7 mt-1" stroke="currentColor" />
+    </div>
   )
 };
