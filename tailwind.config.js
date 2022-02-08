@@ -27,6 +27,11 @@ module.exports = {
         fuchsia: colors.fuchsia,
         pink: colors.pink,
         rose: colors.rose,
+        white1: '#d8dee4',
+        white2: '#9e9c9e',
+        white3: '#565656',
+        purple1: '#a5b4fc',
+        purple2: '#7879f1',
       }
     },
   },
