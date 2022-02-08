@@ -13,6 +13,7 @@ import { Goal } from "../atomicDesign/molecules/iconWithText/Goal"
 import { Stats } from "../atomicDesign/molecules/iconWithText/Stats"
 import { Account } from "../atomicDesign/molecules/iconWithText/Account"
 import { NameTag } from "../atomicDesign/atoms/nameTag/NameTag"
+import { TextSize2xl } from "../atomicDesign/atoms/text/TextSize2xl"
 import { PriorityHigh } from "../atomicDesign/atoms/priority/PriorityHigh"
 import { NameTagWithAt } from "../atomicDesign/atoms/nameTag/NameTagWithAt"
 
@@ -41,9 +42,11 @@ export default function App() {
   }, []);
 
   const inputEl = useRef(null);
+  const tagEl = useRef(null);
   const handleAddTodoListItem = () => {
+    // ここも
     if (inputEl.current.value === "") return;
-    addTodoListItem(inputEl.current.value);
+    addTodoListItem(inputEl.current.value, tagEl.current.value);
     inputEl.current.value = "";
   }
 
@@ -54,15 +57,16 @@ export default function App() {
   return (
     <>
       <div class="flex leading-10 w-56 h-8">
-        <NameTagWithAt listName={"りすとりすとりすと名"} />
         <PriorityHigh />
         <FlagMarkType1>フラグ</FlagMarkType1>
       </div>
       <NameTag taskName={"タスク名"} />
       <br />
       <TodoTitle title="Todo進捗管理" as="h1" />
+      {/* ここも追加関係 */}
       <TodoAdd
         inputEl={inputEl}
+        tagEl={tagEl}
         handleAddTodoListItem={handleAddTodoListItem} />
       <TodoTitle title={"すべて"} as="h2" />
       <TodoList
@@ -89,6 +93,7 @@ export default function App() {
           </div>
         )
       })}
+      <TextSize2xl/>
       <Home />
       <Mylist />
       <Goal />
