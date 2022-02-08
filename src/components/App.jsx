@@ -40,9 +40,11 @@ export default function App() {
   }, []);
 
   const inputEl = useRef(null);
+  const tagEl = useRef(null);
   const handleAddTodoListItem = () => {
+    // ここも
     if (inputEl.current.value === "") return;
-    addTodoListItem(inputEl.current.value);
+    addTodoListItem(inputEl.current.value, tagEl.current.value);
     inputEl.current.value = "";
   }
 
@@ -65,8 +67,10 @@ export default function App() {
       <NameTag taskName={"タスク名"} />
       <br />
       <TodoTitle title="Todo進捗管理" as="h1" />
+      {/* ここも追加関係 */}
       <TodoAdd
         inputEl={inputEl}
+        tagEl={tagEl}
         handleAddTodoListItem={handleAddTodoListItem} />
       <TodoTitle title={"すべて"} as="h2" />
       <TodoList
