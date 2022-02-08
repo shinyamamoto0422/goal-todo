@@ -4,7 +4,7 @@ import { BookmarkIcon } from '@heroicons/react/outline';
 export const FlagMarkType1 = () => {
     const [flagButton, setFlagButton] = useState(false);
     return (
-        <div class={`w-full md:h-screen ${flagButton ? 'flag' : ''}`}>
+        <div class={`w-6 h-8 mx-2 ${flagButton ? 'flag' : ''}`}>
             <div class="">
                 <button onClick={() => setFlagButton(!flagButton)}>
                     {flagButton ? (
