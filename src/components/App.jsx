@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react"
 import { useTodo } from "../hooks/useTodo"
+
 import db from "../firebase/firebase"
 import { collection, getDocs, onSnapshot } from "firebase/firestore"
+
 import { TodoTitle } from "./TodoTitle"
 import { TodoAdd } from "./TodoAdd"
 import { TodoList } from "./TodoList"
-import { FlagMarkType1 } from "../atomicDesign/atoms/flagMark/FlagMarkType1"
 
 import { Home } from "../atomicDesign/molecules/iconWithText/Home"
 import { Mylist } from "../atomicDesign/molecules/iconWithText/Mylist"
@@ -13,6 +14,8 @@ import { Goal } from "../atomicDesign/molecules/iconWithText/Goal"
 import { Stats } from "../atomicDesign/molecules/iconWithText/Stats"
 import { Account } from "../atomicDesign/molecules/iconWithText/Account"
 import { NameTag } from "../atomicDesign/atoms/nameTag/NameTag"
+
+import Logo from "../assets/logo.svg"
 
 export default function App() {
   const {
@@ -54,15 +57,16 @@ export default function App() {
 
   return (
     <>
-      <div class="bg-black1 w-32 h-screen">
+      <section class="bg-black1 w-28 h-screen">
         <div class="ml-2">
+          <img class="w-20" src={Logo} alt="logo" />
           <Home />
           <Mylist />
           <Goal />
           <Stats />
           <Account />
         </div>
-      </div>
+      </section>
 
       <NameTag taskName={"タスク名"} />
       <br />
