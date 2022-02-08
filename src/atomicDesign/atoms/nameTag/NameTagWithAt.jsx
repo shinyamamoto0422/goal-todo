@@ -1,9 +1,9 @@
 export const NameTagWithAt = ({ listName }) => {
     return (
-        <textarea
-            class="text-white2 text-size-sm text-center w-max-20 h-5"
+        <p
+            class="text-white2 text-size-sm text-center h-5 w-48 mt-2 ml-4 truncate"
         >
             @{listName}
-        </textarea>
+        </p>
     );
 };

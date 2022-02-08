@@ -17,6 +17,7 @@ import { NameTag } from "../atomicDesign/atoms/nameTag/NameTag"
 
 import Logo from "../assets/logo.svg"
 import { TaskName } from "../atomicDesign/atoms/TaskName"
+import { OneTask } from "../atomicDesign/organisms/OneTask"
 
 export default function App() {
   const {
@@ -73,8 +74,21 @@ export default function App() {
       {/**まとめて画面左側に表示*/}
       <div class="w-5/12">
         {/**未完了エリア */}
-        <div class="bg-blue-300">
-          <TaskName>タスクネームたすくねーむ！？！？</TaskName>
+        <div class="">
+          <OneTask
+            taskName={"たすく"}
+            listName={"仮リスト"}
+            priorityNum={"2"}
+            flug={true}
+            timeText={"29:30"}
+            dateText={"10/31"} />
+          <OneTask
+            taskName={"たすくねえむaadddddddddddddda"}
+            listName={"仮のリストりすと"}
+            priorityNum={"0"}
+            flug={false}
+            timeText={"29:30"}
+            dateText={"10/31"} />
           <TodoTitle title="未完了" as="h2" />
           <TodoList
             todos={incompletedList}
@@ -83,7 +97,7 @@ export default function App() {
         </div>
 
         {/**完了エリア */}
-        <div class="bg-green-300">
+        <div class="">
           <TodoTitle title="完了" as="h2" />
           <TodoList
             todos={completeList}
@@ -102,7 +116,7 @@ export default function App() {
       </div>
 
       {/**入力エリア 画面右側に表示 */}
-      <div class="bg-red-300 w-7/12">
+      <div class="w-7/12 bg-black1">
         <NameTag taskName={"タスク名"} />
         <br />
         <TodoTitle title="Todo進捗管理" as="h1" />

@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { BookmarkIcon } from '@heroicons/react/outline';
 
-export const FlagMarkType1 = () => {
+export const FlagMarkType1 = ({ flug }) => {
     const [flagButton, setFlagButton] = useState(false);
     return (
-        <div class={`w-6 h-8 mx-2 ${flagButton ? 'flag' : ''}`}>
+        <div class={`w-4 h-8 ml-1 mr-2 ${flagButton ? 'flag' : ''}`}>
             <div class="">
                 <button onClick={() => setFlagButton(!flagButton)}>
                     {flagButton ? (
-                        <div class="text-indigo-300">
+                        <div class="text-purple2">
                             <BookmarkIcon class="h-8 w-7" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
                                 <path
                                     strokeLinecap="round"
@@ -19,7 +19,7 @@ export const FlagMarkType1 = () => {
                             </BookmarkIcon>
                         </div>
                     ) : (
-                        <div class="text-gray-300">
+                        <div class="text-white2">
                             <BookmarkIcon class="h-8 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path
                                     strokeLinecap="round"
