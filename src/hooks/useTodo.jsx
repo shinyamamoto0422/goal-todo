@@ -30,7 +30,7 @@ export const useTodo = () => {
   const addTodoListItem = (todoContent) => {
     const newTodoItem = {
       content: todoContent,
-      id: uuid.v4(),
+      id: uuid(),
       done: false
     };
     return todoData.addTodoData(newTodoItem).then((addTodo) => {
