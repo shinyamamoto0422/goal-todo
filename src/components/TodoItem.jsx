@@ -5,7 +5,7 @@ export const TodoItem = ({todo, tag, deleteTodoListItem, toggleTodoListItemStatu
   const handleToggleTodoListItemStatus = () => toggleTodoListItemStatus(todo.id, todo.done);
   return (
     <>
-      <li>
+      <li class="text-white1">
         {todo.content}
         <NameTag  tag={todo.tag}/>
         <button onClick={handleToggleTodoListItemStatus}>{todo.done ? "未完了リストへ" : "完了リストへ"}</button>
