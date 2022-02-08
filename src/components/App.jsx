@@ -24,7 +24,7 @@ export default function App() {
     addTodoListItem,
     deleteTodoListItem
   } = useTodo();
-  
+
   const [todosData, setTodosData] = useState([]);
   useEffect(() => {
     // データベースからデータを取得する
@@ -56,52 +56,64 @@ export default function App() {
   const completeList = todoList.filter(todo => todo.done);
 
   return (
-    <>
-      <section class="bg-black1 w-28 h-screen">
-        <div class="ml-2">
-          <img class="w-20" src={Logo} alt="logo" />
+    <div class="bg-black2">
+      {/**サイドバー */}
+      <div class="bg-black1 w-28 h-screen">
+        <div class="ml-2 h-auto">
+          <img class="w-20 h-auto" src={Logo} alt="logo" />
           <Home />
           <Mylist />
           <Goal />
           <Stats />
           <Account />
         </div>
-      </section>
+      </div>
 
-      <NameTag taskName={"タスク名"} />
-      <br />
-      <TodoTitle title="Todo進捗管理" as="h1" />
-      {/* ここも追加関係 */}
-      <TodoAdd
-        inputEl={inputEl}
-        tagEl={tagEl}
-        handleAddTodoListItem={handleAddTodoListItem} 
-      />
-      <TodoTitle title={"すべて"} as="h2" />
-      <TodoList
-        todos={allList}
-        deleteTodoListItem={deleteTodoListItem}
-        toggleTodoListItemStatus={toggleTodoListItemStatus}
-      />
-      <TodoTitle title="未完了" as="h2" />
-      <TodoList
-        todos={incompletedList}
-        deleteTodoListItem={deleteTodoListItem}
-        toggleTodoListItemStatus={toggleTodoListItemStatus} />
-      <TodoTitle title="完了" as="h2" />
-      <TodoList
-        todos={completeList}
-        deleteTodoListItem={deleteTodoListItem}
-        toggleTodoListItemStatus={toggleTodoListItemStatus}
-      />
-      {todosData.map((todo) => {
-        return (
-          <div key={todo.id}>
-            <h1>{todo.title}</h1>
-            <p>{todo.memo}</p>
-          </div>
-        )
-      })}
-    </>
+      {/**入力エリア */}
+      <div class="bg-red-300">
+        <NameTag taskName={"タスク名"} />
+        <br />
+        <TodoTitle title="Todo進捗管理" as="h1" />
+        {/* ここも追加関係 */}
+        <TodoAdd
+          inputEl={inputEl}
+          tagEl={tagEl}
+          handleAddTodoListItem={handleAddTodoListItem}
+        />
+        <TodoTitle title={"すべて"} as="h2" />
+        <TodoList
+          todos={allList}
+          deleteTodoListItem={deleteTodoListItem}
+          toggleTodoListItemStatus={toggleTodoListItemStatus}
+        />
+      </div>
+
+      {/**未完了エリア */}
+      <div class="bg-blue-300">
+        <TodoTitle title="未完了" as="h2" />
+        <TodoList
+          todos={incompletedList}
+          deleteTodoListItem={deleteTodoListItem}
+          toggleTodoListItemStatus={toggleTodoListItemStatus} />
+      </div>
+
+      {/**完了エリア */}
+      <div class="bg-green-300">
+        <TodoTitle title="完了" as="h2" />
+        <TodoList
+          todos={completeList}
+          deleteTodoListItem={deleteTodoListItem}
+          toggleTodoListItemStatus={toggleTodoListItemStatus}
+        />
+        {todosData.map((todo) => {
+          return (
+            <div key={todo.id}>
+              <h1>{todo.title}</h1>
+              <p>{todo.memo}</p>
+            </div>
+          )
+        })}
+      </div>
+    </div>
   )
 }
