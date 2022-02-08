@@ -9,7 +9,7 @@ export const useTodo = () => {
 
   useEffect(() => {
     todoData.getAllTodosData().then(todoList => {
-      setTodoList([...todoList].reverse());
+      setTodoList([...todoList]);
     })
   }, []);
 
@@ -27,14 +27,20 @@ export const useTodo = () => {
     });
   }; 
 
-  const addTodoListItem = (todoContent) => {
+  const addTodoListItem = (title, taskName) => {
+    // ここに重要度・リスト名・期限を追加する
+    // 入力した内容がtodoContentに入る・handleAddTodoListItemから受け取る
     const newTodoItem = {
-      content: todoContent,
+      content: title,
       id: uuid(),
-      done: false
+      done: false,
+      taskName: taskName,
+      // priority: "2",
+      // flagMark: false,
+      // date: "2020-01-01"
     };
     return todoData.addTodoData(newTodoItem).then((addTodo) => {
-      setTodoList([addTodo, ...todoList]);
+      setTodoList([...todoList, addTodo]);
     })
   };
 

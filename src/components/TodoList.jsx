@@ -1,5 +1,5 @@
 import { TodoItem } from "./TodoItem"
-export const TodoList = ({todos,deleteTodoListItem, toggleTodoListItemStatus}) => {
+export const TodoList = ({todos, deleteTodoListItem, toggleTodoListItemStatus}) => {
   return (
     <>
       <ul>
