@@ -32,6 +32,8 @@ module.exports = {
         white3: '#565656',
         purple1: '#a5b4fc',
         purple2: '#7879f1',
+        black1: '#161b22',
+        black2: '#0d1117',
       }
     },
   },
