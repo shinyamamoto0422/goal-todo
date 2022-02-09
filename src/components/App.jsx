@@ -70,7 +70,7 @@ export default function App() {
           <AccountIconWithText />
         </div>
       </div>
-
+      
       {/**まとめて画面左側に表示*/}
       <div class="w-5/12">
         {/**未完了エリア */}
