@@ -38,7 +38,6 @@ export const HomePage = () => {
     const inputEl = useRef(null);
     const tagEl = useRef(null);
     const handleAddTodoListItem = () => {
-        // ここも
         if (inputEl.current.value === "") return;
         addTodoListItem(inputEl.current.value, tagEl.current.value);
         inputEl.current.value = "";
@@ -119,7 +118,6 @@ export const HomePage = () => {
                             />
                             <br />
 
-
                             <div class="flex ml-24">
                                 <TodoTitle title={"すべてのタスク"} as="h2" />
                             </div>
@@ -132,8 +130,6 @@ export const HomePage = () => {
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </>
     )

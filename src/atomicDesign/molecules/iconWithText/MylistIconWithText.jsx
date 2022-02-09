@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { IconMylist } from "../../atoms/icon/IconMylist.jsx"
 
-export const Mylist = () => {
+export const MylistIconWithText = () => {
   return (
     <Link to="/mylist">
       <div class="flex items-center">

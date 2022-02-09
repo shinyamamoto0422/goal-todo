@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { IconGoal } from "../../atoms/icon/IconGoal.jsx"
 
-export const Goal = () => {
+export const GoalIconWithText = () => {
   return (
     <Link to="/goal">
       <div class="flex items-center">
