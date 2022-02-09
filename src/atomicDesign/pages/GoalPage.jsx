@@ -16,7 +16,7 @@ export const GoalPage = () => {
                         <div class="border border-1 border-white3" />
                     </div>
 
-                    <p class="text-9xl text-white1">ごーる</p>
+                    <p class="text-9xl text-white1">Goal</p>
 
                 </div>
 

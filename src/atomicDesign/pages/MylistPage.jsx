@@ -16,7 +16,7 @@ export const MylistPage = () => {
                         <div class="border border-1 border-white3" />
                     </div>
 
-                    <p class="text-9xl text-white1">まいりすと</p>
+                    <p class="text-9xl text-white1">Mylist</p>
 
                 </div>
 

@@ -16,7 +16,7 @@ export const AccountPage = () => {
                         <div class="border border-1 border-white3" />
                     </div>
 
-                    <p class="text-9xl text-white1">アカウントページ</p>
+                    <p class="text-9xl text-white1">Account</p>
 
                 </div>
 

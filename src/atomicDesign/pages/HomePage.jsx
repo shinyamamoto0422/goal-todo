@@ -59,7 +59,7 @@ export const HomePage = () => {
                 <div class="h-full">
                     {/**トップバー */}
                     <div class="">
-                        <p class="text-white1 h-12 ml-24 mt-2 w-screen text-3xl">ホーム</p>
+                        <p class="text-white1 h-12 ml-24 mt-2 w-screen text-3xl">Home</p>
                         <div class="border border-1 border-white3" />
                     </div>
 
