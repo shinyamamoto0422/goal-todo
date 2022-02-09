@@ -74,22 +74,12 @@ export default function App() {
       {/**まとめて画面左側に表示*/}
       <div class="w-5/12">
         {/**未完了エリア */}
+        <br />
         <div class="">
-          <OneTask
-            taskName={"たすく"}
-            listName={"仮リスト"}
-            priorityNum={"2"}
-            flug={true}
-            timeText={"29:30"}
-            dateText={"10/31"} />
-          <OneTask
-            taskName={"たすくねえむaadddddddddddddda"}
-            listName={"仮のリストりすと"}
-            priorityNum={"0"}
-            flug={false}
-            timeText={"29:30"}
-            dateText={"10/31"} />
-          <TodoTitle title="未完了" as="h2" />
+          <div class="flex ml-24">
+            <TodoTitle title="未完了のタスク" as="h2" />
+          </div>
+          <div class="border border-1 border-white3 ml-24" />
           <TodoList
             todos={incompletedList}
             deleteTodoListItem={deleteTodoListItem}
@@ -97,8 +87,12 @@ export default function App() {
         </div>
 
         {/**完了エリア */}
+        <br />
         <div class="">
-          <TodoTitle title="完了" as="h2" />
+          <div class="flex ml-24">
+            <TodoTitle title="完了したタスク" as="h2" />
+          </div>
+          <div class="border border-1 border-white3 ml-24" />
           <TodoList
             todos={completeList}
             deleteTodoListItem={deleteTodoListItem}
