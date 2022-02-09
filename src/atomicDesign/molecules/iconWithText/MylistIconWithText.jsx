@@ -1,6 +1,6 @@
 import { IconMylist } from "../../atoms/icon/IconMylist.jsx"
 
-export const Mylist = () => {
+export const MylistIconWithText = () => {
   return (
     <div class="flex items-center">
       <IconMylist />

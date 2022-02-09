@@ -1,6 +1,6 @@
 import { IconHome } from "../../atoms/icon/IconHome.jsx"
 
-export const Home = () => {
+export const HomeIconWithText = () => {
   return (
     <div class="flex">
       <IconHome />

@@ -1,6 +1,6 @@
 import { IconGoal } from "../../atoms/icon/IconGoal.jsx"
 
-export const Goal = () => {
+export const GoalIconWithText = () => {
   return (
     <div class="flex items-center">
       <IconGoal />

@@ -8,11 +8,11 @@ import { TodoTitle } from "./TodoTitle"
 import { TodoAdd } from "./TodoAdd"
 import { TodoList } from "./TodoList"
 
-import { Home } from "../atomicDesign/molecules/iconWithText/Home"
-import { Mylist } from "../atomicDesign/molecules/iconWithText/Mylist"
-import { Goal } from "../atomicDesign/molecules/iconWithText/Goal"
-import { Stats } from "../atomicDesign/molecules/iconWithText/Stats"
-import { Account } from "../atomicDesign/molecules/iconWithText/Account"
+import { HomeIconWithText } from "../atomicDesign/molecules/iconWithText/HomeIconWithText"
+import { MylistIconWithText } from "../atomicDesign/molecules/iconWithText/MylistIconWithText"
+import { GoalIconWithText } from "../atomicDesign/molecules/iconWithText/GoalIconWithText"
+import { StatsIconWithText } from "../atomicDesign/molecules/iconWithText/StatsIconWithText"
+import { AccountIconWithText } from "../atomicDesign/molecules/iconWithText/AccountIconWithText"
 import { NameTag } from "../atomicDesign/atoms/nameTag/NameTag"
 
 import Logo from "../assets/logo.svg"
@@ -63,11 +63,11 @@ export default function App() {
       <div class="bg-black1 w-28 h-screen">
         <div class="ml-2 h-auto">
           <img class="w-20 h-auto" src={Logo} alt="logo" />
-          <Home />
-          <Mylist />
-          <Goal />
-          <Stats />
-          <Account />
+          <HomeIconWithText />
+          <MylistIconWithText />
+          <GoalIconWithText />
+          <StatsIconWithText />
+          <AccountIconWithText />
         </div>
       </div>
 
@@ -127,7 +127,6 @@ export default function App() {
           toggleTodoListItemStatus={toggleTodoListItemStatus}
         />
       </div>
-
     </div>
   )
 }

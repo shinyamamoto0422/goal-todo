@@ -1,6 +1,6 @@
 import { IconStats } from "../../atoms/icon/IconStats.jsx"
 
-export const Stats = () => {
+export const StatsIconWithText = () => {
   return (
     <div class="flex items-center">
       <IconStats />
