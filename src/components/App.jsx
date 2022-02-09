@@ -6,6 +6,7 @@ import { GoalPage } from "../atomicDesign/pages/GoalPage"
 import { StatsPage } from "../atomicDesign/pages/StatsPage"
 import { AccountPage } from "../atomicDesign/pages/AccountPage"
 import { Page404 } from "../atomicDesign/pages/Page404"
+
 export default function App() {
   return (
     <div className="App">

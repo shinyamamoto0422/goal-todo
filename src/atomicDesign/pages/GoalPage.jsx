@@ -1,3 +1,4 @@
+import GoalImage from '../../assets/Goal/goal_image.svg';
 import { SideBar } from "../templates/SideBar"
 
 
@@ -17,7 +18,7 @@ export const GoalPage = () => {
                     </div>
 
                     <p class="text-9xl text-white1">Goal</p>
-
+                    <img src={GoalImage} alt="GoalImage" />
                 </div>
 
             </div>
