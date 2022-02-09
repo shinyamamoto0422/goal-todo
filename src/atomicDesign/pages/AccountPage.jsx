@@ -1,8 +1,7 @@
-import GoalImage from '../../assets/Goal/goal_image.svg';
 import { SideBar } from "../templates/SideBar"
 
 
-export const GoalPage = () => {
+export const AccountPage = () => {
     return (
         <>
             <div class="bg-black2 flex h-screen">
@@ -17,9 +16,10 @@ export const GoalPage = () => {
                         <div class="border border-1 border-white3" />
                     </div>
 
-                    <p class="text-9xl text-white1">Goal</p>
-                    <img src={GoalImage} alt="GoalImage" />
+                    <p class="text-9xl text-white1">Account</p>
+
                 </div>
+
 
             </div>
         </>

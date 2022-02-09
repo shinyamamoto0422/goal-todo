@@ -1,3 +1,9 @@
+お知らせ
+
+安全にgitを運用していくため、defaultのブランチをdevelopにすることにしました。
+mainにはdevelopで確認して大丈夫だと判断してからpullするようにしてください！
+よろしくお願いします！
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
