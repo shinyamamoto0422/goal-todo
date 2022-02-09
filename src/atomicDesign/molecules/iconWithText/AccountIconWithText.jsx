@@ -1,6 +1,6 @@
 import { IconAccount } from "../../atoms/icon/IconAccount.jsx"
 
-export const Account = () => {
+export const AccountIconWithText = () => {
   return (
     <div class="flex items-center">
       <IconAccount />
