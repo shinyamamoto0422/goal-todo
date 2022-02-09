@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { FlagMarkType1 } from '../atomicDesign/atoms/flagMark/FlagMarkType1';
 import { PriorityThree } from '../atomicDesign/molecules/priority/PriorityThree';
-import 'react-modern-calendar-datepicker/lib/DatePicker.css';
-import DatePicker from 'react-modern-calendar-datepicker';
 
 export const TodoAdd = ({ inputEl, tagEl, handleAddTodoListItem }) => {
   const [ priorityIsShown, setPriorityIsShown ] = useState(false);
+  const [timeValue, setTimeValue] = useState(new Date());
   return ( 
     <>
     {/* textareaはtodoのtitleを入力する要素 */}
@@ -29,7 +28,6 @@ export const TodoAdd = ({ inputEl, tagEl, handleAddTodoListItem }) => {
         )}
       </div>
       <textarea defaultValue="メモ" name="" id="" cols="30" rows="2"></textarea>
-      <DatePicker/>
       <button onClick={handleAddTodoListItem}>追加</button>
     </>
   )
