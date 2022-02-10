@@ -35,13 +35,16 @@ export const HomePage = () => {
         });
     }, []);
 
-    const inputEl = useRef(null);
-    const tagEl = useRef(null);
+    // 入力変数を増やしたら、追加の必要あり
+    const taskNameEl = useRef("");
+    const listNameEl = useRef("");
+    const todoMemoEl = useRef("");
     const handleAddTodoListItem = () => {
-        if (inputEl.current.value === "") return;
-        addTodoListItem(inputEl.current.value, tagEl.current.value);
-        inputEl.current.value = "";
-        tagEl.current.value = "";
+        if (taskNameEl.current.value === "") return;
+        addTodoListItem(taskNameEl.current.value, listNameEl.current.value, todoMemoEl.current.value);
+        taskNameEl.current.value = "";
+        listNameEl.current.value = "";
+        todoMemoEl.current.value = "";
     };
 
     // todoリストのデータ
@@ -50,22 +53,22 @@ export const HomePage = () => {
     const completeList = todoList.filter(todo => todo.complete);
 
     return (
-        <>
-            <div class="bg-black2 flex h-screen">
+        <div class="h-screen w-screen">
+            <div class="bg-black2 flex h-full w-full">
                 {/**サイドバー */}
                 <SideBar />
 
                 {/**サイドバー以外 */}
-                <div class="h-full">
+                <div class="h-full w-full">
                     {/**トップバー */}
                     <div class="">
-                        <p class="text-white1 h-12 ml-24 mt-2 w-screen text-3xl">Home</p>
+                        <p class="text-white1 h-12 ml-24 mt-2 w-full text-3xl">Home</p>
                         <div class="border border-1 border-white3" />
                     </div>
 
-                    <div class="flex w-screen h-full">
+                    <div class="flex h-full">
                         {/**まとめて画面左側に表示*/}
-                        <div class="w-5/12">
+                        <div class="w-5/12 f-full">
                             {/**未完了エリア */}
                             <br />
                             <div class="">
@@ -95,7 +98,7 @@ export const HomePage = () => {
                                     return (
                                         <div key={todo.id}>
                                             <h1>{todo.taskName}</h1>
-                                            <p>{todo.memo}</p>
+                                            <p>{todo.todoMemo}</p>
                                         </div>
                                     )
                                 })}
@@ -104,16 +107,17 @@ export const HomePage = () => {
                         <div class="border border-1 border-white3" />
 
                         {/**入力エリア 画面右側に表示 */}
-                        <div class="w-7/12 h-full bg-black1">
+                        <div class="w-full h-full bg-black1">
                             <br />
                             <div class="flex ml-12">
                                 <TodoTitle title="Todo進捗管理" as="h1" />
                             </div>
                             <br />
-                            {/* ここも追加関係 */}
+                            {/* ここも追加関係、入力変数を増やしたらここも追加の必要あり */}
                             <TodoAdd
-                                inputEl={inputEl}
-                                tagEl={tagEl}
+                                taskNameEl={taskNameEl}
+                                listNameEl={listNameEl}
+                                todoMemoEl={todoMemoEl}
                                 handleAddTodoListItem={handleAddTodoListItem}
                             />
                             <br />
@@ -131,6 +135,6 @@ export const HomePage = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
