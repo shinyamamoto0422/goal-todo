@@ -1025,9 +1025,7 @@
     "core-js-pure" "^3.20.2"
     "regenerator-runtime" "^0.13.4"
 
-
 "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.14.8", "@babel/runtime@^7.16.3", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
-
   "integrity" "sha512-etcO/ohMNaNA2UBdaXBBSX/3aEzFMRrVfaPv8Ptc0k+cWpWW0QFiGZ2XnVqQZI1Cf734LbPGmqBKWESfW4x/dQ=="
   "resolved" "https://registry.npmjs.org/@babel/runtime/-/runtime-7.17.0.tgz"
   "version" "7.17.0"
@@ -5080,6 +5078,11 @@
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
 
+"fsevents@^2.3.2", "fsevents@~2.3.2":
+  "integrity" "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
+  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
+  "version" "2.3.2"
+
 "function-bind@^1.1.1":
   "integrity" "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
   "resolved" "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz"
@@ -5284,7 +5287,6 @@
   "version" "5.2.0"
   dependencies:
     "@babel/runtime" "^7.7.6"
-
 
 "hoist-non-react-statics@^3.3.1", "hoist-non-react-statics@^3.3.2":
   "integrity" "sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw=="
@@ -5811,6 +5813,11 @@
     "chalk" "^2.4.2"
     "filelist" "^1.0.1"
     "minimatch" "^3.0.4"
+
+"jalaali-js@^1.1.0":
+  "integrity" "sha512-irl0pXL59Xl0Oz6jyOiJed/NxrVeS6fSx6a8atQOH/LsPWPZwBCxwe5XVEIqjnwt69FRxvnCCwQn5dTMxwbazQ=="
+  "resolved" "https://registry.npmjs.org/jalaali-js/-/jalaali-js-1.2.3.tgz"
+  "version" "1.2.3"
 
 "jest-changed-files@^27.5.0":
   "integrity" "sha512-BGWKI7E6ORqbF5usF1oA4ftbkhVZVrXr8jB0/BrU6TAn3kfOVwX2Zx6pKIXYutJ+qNEjT8Da/gGak0ajya/StA=="
@@ -7889,11 +7896,7 @@
     "strip-ansi" "^6.0.1"
     "text-table" "^0.2.0"
 
-
-
-
-"react-dom@*", "react-dom@^17.0.2", "react-dom@>=16.6.0", "react-dom@>=16.8":
-
+"react-dom@*", "react-dom@^17.0.2", "react-dom@>=16.6.0", "react-dom@>=16.8", "react-dom@>=16.8.0":
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
   "version" "17.0.2"
@@ -7921,6 +7924,13 @@
   "integrity" "sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
+
+"react-modern-calendar-datepicker@^3.1.6":
+  "integrity" "sha512-lnMqEMj9Wn32/sm119tjCl5lOkq4u9vJE7wggi7hdXV4s8rPdKlH56FVVehlBi0dfYeWQVZ9npY384Zprjn4WA=="
+  "resolved" "https://registry.npmjs.org/react-modern-calendar-datepicker/-/react-modern-calendar-datepicker-3.1.6.tgz"
+  "version" "3.1.6"
+  dependencies:
+    "jalaali-js" "^1.1.0"
 
 "react-refresh@^0.11.0", "react-refresh@>=0.10.0 <1.0.0":
   "integrity" "sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A=="
