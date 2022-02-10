@@ -1,6 +1,6 @@
 import { OneTask } from "../atomicDesign/organisms/OneTask";
 
-export const TodoItem = ({ todo, tag, deleteTodoListItem, toggleTodoListItemStatus }) => {
+export const TodoItem = ({ todo, deleteTodoListItem, toggleTodoListItemStatus }) => {
   const handleDeleteTodoListItem = () => deleteTodoListItem(todo.id);
   const handleToggleTodoListItemStatus = () => toggleTodoListItemStatus(todo.id, todo.done);
   console.log("todo=" + todo)
