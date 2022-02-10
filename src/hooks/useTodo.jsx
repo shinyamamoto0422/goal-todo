@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import {v4 as uuid} from "uuid";
+import { v4 as uuid } from "uuid";
 
 import * as todoData from "../apis/apiTodos";
 
@@ -13,9 +13,10 @@ export const useTodo = () => {
     })
   }, []);
 
-  const toggleTodoListItemStatus = (id, done) => {
+  // 完了か未完了かの切り替え関数
+  const toggleTodoListItemStatus = (id, complete) => {
     const todoItem = todoList.find(item => item.id === id);
-    const newTodoItem = { ...todoItem, done: !done };
+    const newTodoItem = { ...todoItem, complete: !complete };
 
     todoData.updateTodoData(id, newTodoItem).then((updatedTodo) => {
       const newTodoList = todoList.map((item) => {
@@ -25,17 +26,19 @@ export const useTodo = () => {
       })
       setTodoList(newTodoList);
     });
-  }; 
+  };
 
-  const addTodoListItem = (title, tag) => {
+  // todoの追加、引数は taskName, listName, priorityNum, flag, deadline, complete, todoMemo
+  const addTodoListItem = (taskName, listName, todoMemo) => {
     const newTodoItem = {
-      content: title,
+      taskName: taskName,
       id: uuid(),
-      done: false,
-      tag: tag,
-      // priority: "2",
-      // flagMark: false,
-      // date: "2020-01-01"
+      listName: listName,
+      priorityNum: "2",
+      flag: false,
+      deadline: "23:59 2020-01-01",
+      complete: false,
+      todoMemo: todoMemo
     };
     console.log(newTodoItem);
     return todoData.addTodoData(newTodoItem).then((addTodo) => {
