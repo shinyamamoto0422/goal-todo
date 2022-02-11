@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom"
-import { initializeApp } from "firebase/app"
 
 import { HomePage } from "../atomicDesign/pages/HomePage"
 import { MylistPage } from "../atomicDesign/pages/MylistPage"
@@ -8,6 +7,7 @@ import { StatsPage } from "../atomicDesign/pages/StatsPage"
 import { AccountPage } from "../atomicDesign/pages/AccountPage"
 import { Page404 } from "../atomicDesign/pages/Page404"
 import { StartPage } from "../atomicDesign/pages/StartPage"
+
 
 
 export default function App() {
