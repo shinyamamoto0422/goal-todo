@@ -22,8 +22,8 @@ export const HomePage = () => {
     const [todosData, setTodosData] = useState([]);
     useEffect(() => {
         // データベースからデータを取得する
-        const todosData = collection(db, "todosData");
-        //console.log(todosData);
+        const todosData = collection(db, "users");
+        console.log(todosData);
         // snapshotを取得する
         getDocs(todosData).then((snapshot) => {
             // console.log(snapshot.docs.map((doc) => ({...doc.data()})));
