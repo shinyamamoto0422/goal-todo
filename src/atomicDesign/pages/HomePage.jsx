@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import { useTodo } from "../../hooks/useTodo"
 
-import db from "../../firebase/firebase"
+import { db } from "../../firebase/firebase"
 import { collection, getDocs, onSnapshot } from "firebase/firestore"
 
 import { TodoTitle } from "../../components/TodoTitle"
