@@ -19,21 +19,23 @@ export const HomePage = () => {
         deleteTodoListItem
     } = useTodo();
 
-    const [todosData, setTodosData] = useState([]);
-    useEffect(() => {
-        // データベースからデータを取得する
-        const todosData = collection(db, "users");
-        console.log(todosData);
-        // snapshotを取得する
-        getDocs(todosData).then((snapshot) => {
-            // console.log(snapshot.docs.map((doc) => ({...doc.data()})));
-            setTodosData(snapshot.docs.map((doc) => ({ ...doc.data() })));
-        });
-        // リアルタイムでデータを取得する
-        onSnapshot((todosData), (todoData) => {
-            setTodosData(todoData.docs.map((doc) => ({ ...doc.data() })));
-        });
-    }, []);
+    // ここは実験的にfirebaseのデータベースを使っている　機能していない
+
+    // const [todosData, setTodosData] = useState([]);
+    // useEffect(() => {
+    //     // データベースからデータを取得する
+    //     const todosData = collection(db, "users");
+    //     console.log(todosData);
+    //     // snapshotを取得する
+    //     getDocs(todosData).then((snapshot) => {
+    //         // console.log(snapshot.docs.map((doc) => ({...doc.data()})));
+    //         setTodosData(snapshot.docs.map((doc) => ({ ...doc.data() })));
+    //     });
+    //     // リアルタイムでデータを取得する
+    //     onSnapshot((todosData), (todoData) => {
+    //         setTodosData(todoData.docs.map((doc) => ({ ...doc.data() })));
+    //     });
+    // }, []);
 
     // 入力変数を増やしたら、追加の必要あり
     const taskNameEl = useRef("");
@@ -94,14 +96,16 @@ export const HomePage = () => {
                                     deleteTodoListItem={deleteTodoListItem}
                                     toggleTodoListItemStatus={toggleTodoListItemStatus}
                                 />
-                                {todosData.map((todo) => {
+
+                                {/* 実験的にfirebase導入　機能していない */}
+                                {/* {todosData.map((todo) => {
                                     return (
                                         <div key={todo.id}>
                                             <h1>{todo.taskName}</h1>
                                             <p>{todo.todoMemo}</p>
                                         </div>
                                     )
-                                })}
+                                })} */}
                             </div>
                         </div>
                         <div class="border border-1 border-white3" />
