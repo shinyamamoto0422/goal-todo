@@ -21,6 +21,7 @@ import { TodoAdd } from "../../components/TodoAdd"
 import { TodoList } from "../../components/TodoList"
 
 import { SideBar } from "../templates/SideBar"
+import { TopBar } from "../organisms/TopBar"
 
 export const HomePage = () => {
     const {
@@ -84,42 +85,14 @@ export const HomePage = () => {
             <div class="bg-black2 flex h-full w-full">
                 {/**サイドバー */}
                 <SideBar />
-
                 {/**サイドバー以外 */}
                 <div class="h-full w-full">
                     {/**トップバー */}
-                    <div class="">
-                        <p class="text-white1 h-12 ml-24 mt-2 w-full text-3xl">Home</p>
-                        <div class="border border-1 border-white3" />
-
-                        {/* firebase */}
-                        <input 
-                            type="text" 
-                            placeholder="Name..." 
-                            onChange={(event) => {setNewName(event.target.value)}} />
-                        <input 
-                            type="number" 
-                            placeholder="Age..." 
-                            onChange={(event) => {setNewAge(event.target.value)}}/>
-                        <button onClick={createUser}>create user</button>
-                        {users.map((user) => {
-                            return (
-                                <div key={uuidv4()}>
-                                    <h1>Name: {user.name}</h1>
-                                    <h1>Age: {user.age}</h1>
-                                    <button onClick={() => updateUser(user.id, user.age)}>increase age</button>
-                                    <br />
-                                    <button onClick={() => deleteUser(user.id)}>delete user</button>
-                                </div>
-                            )
-                        })}
-                    </div>
-
+                    <TopBar title={"Home"}/>
                     <div class="flex h-full">
                         {/**まとめて画面左側に表示*/}
                         <div class="w-5/12 f-full">
                             {/**未完了エリア */}
-                            <br />
                             <div class="">
                                 <div class="flex ml-24">
                                     <TodoTitle title="未完了のタスク" as="h2" />
@@ -130,9 +103,7 @@ export const HomePage = () => {
                                     deleteTodoListItem={deleteTodoListItem}
                                     toggleTodoListItemStatus={toggleTodoListItemStatus} />
                             </div>
-
                             {/**完了エリア */}
-                            <br />
                             <div class="">
                                 <div class="flex ml-24">
                                     <TodoTitle title="完了したタスク" as="h2" />
@@ -144,16 +115,6 @@ export const HomePage = () => {
                                     deleteTodoListItem={deleteTodoListItem}
                                     toggleTodoListItemStatus={toggleTodoListItemStatus}
                                 />
-
-                                {/* 実験的にfirebase導入　機能していない */}
-                                {/* {todosData.map((todo) => {
-                                    return (
-                                        <div key={todo.id}>
-                                            <h1>{todo.taskName}</h1>
-                                            <p>{todo.todoMemo}</p>
-                                        </div>
-                                    )
-                                })} */}
                             </div>
                         </div>
                         <div class="border border-1 border-white3" />
@@ -187,6 +148,27 @@ export const HomePage = () => {
                     </div>
                 </div>
             </div>
+            {/* firebase */}
+            <input 
+                type="text" 
+                placeholder="Name..." 
+                onChange={(event) => {setNewName(event.target.value)}} />
+            <input 
+                type="number" 
+                placeholder="Age..." 
+                onChange={(event) => {setNewAge(event.target.value)}}/>
+            <button onClick={createUser}>create user</button>
+            {users.map((user) => {
+                return (
+                    <div key={uuidv4()}>
+                        <h1>Name: {user.name}</h1>
+                        <h1>Age: {user.age}</h1>
+                        <button onClick={() => updateUser(user.id, user.age)}>increase age</button>
+                        <br />
+                        <button onClick={() => deleteUser(user.id)}>delete user</button>
+                    </div>
+                )
+            })}
         </div>
     )
 }

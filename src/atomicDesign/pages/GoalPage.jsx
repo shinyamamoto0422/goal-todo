@@ -1,23 +1,28 @@
 import { GoalBlock } from '../atoms/block/GoalBlock';
+import { TopBar } from '../organisms/TopBar';
 import { SideBar } from "../templates/SideBar"
-
 
 export const GoalPage = () => {
     return (
-        <div class="flex">
+        <div class="
+            flex
+            bg-gradient-to-t 
+            from-blue1 via-blue2 to-blue3 
+        ">
             {/**サイドバー */}
-            <SideBar class=""/>
-            <div class="bg-gradient-to-t from-blue1 via-blue2 to-blue3 h-screen grow flex justify-cneterflex justify-center items-center">
+            <SideBar />
+            <div class="
+                h-screen
+                grow flex justify-cneter flex justify-center items-center
+            ">
                 {/**サイドバー以外 */}
-                <GoalBlock class="">
-                    <div class="h-full">
-                        {/**トップバー */}
-                        <div class="">
-                            <p class="text-white1 h-12 ml-24 mt-2 w-screen text-3xl">ホーム</p>
-                            <div class="border border-1 border-white3" />
-                        </div>
+                <div class="h-full">
+                    {/**トップバー */}
+                    <TopBar title={"Goal"}/>
+                    <div>
+                        <GoalBlock class="block"/>
                     </div>
-                </GoalBlock>
+                </div>
             </div>
         </div>
     )
