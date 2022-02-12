@@ -1,14 +1,15 @@
 import { TodoItem } from "./TodoItem"
-export const TodoList = ({todos, deleteTodoListItem, toggleTodoListItemStatus}) => {
+export const TodoList = ({ todos, deleteTodoListItem, toggleComplete, toggleFlag }) => {
   return (
     <>
       <ul>
         {todos.map(todo => (
-          <TodoItem 
-            key={todo.id} 
-            todo={todo} 
+          <TodoItem
+            key={todo.id}
+            todo={todo}
             deleteTodoListItem={deleteTodoListItem}
-            toggleTodoListItemStatus={toggleTodoListItemStatus}
+            toggleComplete={toggleComplete}
+            toggleFlag={toggleFlag}
           />
         ))}
       </ul>

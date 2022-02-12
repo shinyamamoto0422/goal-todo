@@ -13,10 +13,25 @@ export const useTodo = () => {
     })
   }, []);
 
-  // 完了か未完了かの切り替え関数
-  const toggleTodoListItemStatus = (id, complete) => {
+  // 完了切り替え関数
+  const toggleComplete = (id, status) => {
     const todoItem = todoList.find(item => item.id === id);
-    const newTodoItem = { ...todoItem, complete: !complete };
+    const newTodoItem = { ...todoItem, complete: !status };
+
+    todoData.updateTodoData(id, newTodoItem).then((updatedTodo) => {
+      const newTodoList = todoList.map((item) => {
+        return (
+          item.id !== updatedTodo.id ? item : updatedTodo
+        );
+      })
+      setTodoList(newTodoList);
+    });
+  };
+
+  // フラグ切り替え関数
+  const toggleFlag = (id, status) => {
+    const todoItem = todoList.find(item => item.id === id);
+    const newTodoItem = { ...todoItem, flag: !status };
 
     todoData.updateTodoData(id, newTodoItem).then((updatedTodo) => {
       const newTodoList = todoList.map((item) => {
@@ -53,7 +68,8 @@ export const useTodo = () => {
 
   return {
     todoList,
-    toggleTodoListItemStatus,
+    toggleComplete,
+    toggleFlag,
     addTodoListItem,
     deleteTodoListItem
   };
