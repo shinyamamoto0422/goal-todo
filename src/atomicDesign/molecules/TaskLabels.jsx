@@ -3,14 +3,13 @@ import { NameTagWithAt } from "../atoms/nameTag/NameTagWithAt"
 import { ChevronRightIcon } from '@heroicons/react/outline'
 import { Priority } from "./Priority"
 
-export const TaskLabels = ({ listName, priorityNum, flug }) => {
+export const TaskLabels = ({ todo, toggleFlag }) => {
     return (
         <div class="flex w-56 truncate">
-            <NameTagWithAt listName={listName} />
-            {/**重要度は変更できるようにしたい */}
-            <Priority priorityNum={priorityNum} />
+            <NameTagWithAt listName={todo.listName} />
+            <Priority priorityNum={todo.priorityNum} />
             {/**フラグのTrue, Falseの状態も引数にしたい */}
-            <FlagMarkType1 flug={flug} />
+            <FlagMarkType1 todo={todo} toggleFlag={toggleFlag} />
             <div class="text-white2">
                 <ChevronRightIcon class="h-6 mt-2 ml-2" stroke="currentColor" />
             </div>

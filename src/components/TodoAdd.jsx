@@ -39,7 +39,7 @@ export const TodoAdd = ({ taskNameEl, listNameEl, todoMemoEl, handleAddTodoListI
       <br />
 
       <p>フラグ</p>
-      <FlagMarkType1 />
+      {/*<FlagMarkType1 />*/}
 
       <div class="flex">
         <button

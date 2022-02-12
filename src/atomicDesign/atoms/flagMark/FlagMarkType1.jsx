@@ -1,37 +1,22 @@
-import { useState } from "react";
 import { BookmarkIcon } from '@heroicons/react/outline';
 
-export const FlagMarkType1 = ({ flug }) => {
-    const [flagButton, setFlagButton] = useState(false);
-    return (
-        <div class={`w-4 h-8 ml-1 mr-2 ${flagButton ? 'flag' : ''}`}>
-            <div class="">
-                <button onClick={() => setFlagButton(!flagButton)}>
-                    {flagButton ? (
-                        <div class="text-purple2">
-                            <BookmarkIcon class="h-8 w-7" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                                />
-                            </BookmarkIcon>
-                        </div>
-                    ) : (
-                        <div class="text-white2">
-                            <BookmarkIcon class="h-8 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                                />
-                            </BookmarkIcon>
-                        </div>
-                    )}
+export const FlagMarkType1 = ({ todo, toggleFlag }) => {
+    const handleFlag = () => toggleFlag(todo.id, todo.flag);
+    if (todo.flag) {
+        return (
+            <div class="text-purple2">
+                <button onClick={handleFlag}>
+                    <BookmarkIcon class="h-8 w-7" fill='currentcolor' stroke='currentcolor' />
                 </button>
             </div>
-        </div >
-    );
-};
+        )
+    } else {
+        return (
+            <div class="text-white2">
+                <button onClick={handleFlag}>
+                    <BookmarkIcon class="h-8 w-7" fill='none' stroke='currentcolor' />
+                </button>
+            </div>
+        )
+    }
+}

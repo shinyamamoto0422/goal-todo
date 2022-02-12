@@ -5,14 +5,14 @@ import { users } from "../../libs/userModel"
 
 // database import
 import { db } from '../../firebase/firebase'
-import { 
+import {
     collection,
-    getDocs, 
-    addDoc, 
-    updateDoc, 
+    getDocs,
+    addDoc,
+    updateDoc,
     doc,
     deleteDoc
-    } from "firebase/firestore"
+} from "firebase/firestore"
 import { v4 as uuidv4 } from "uuid"
 // finish database import
 
@@ -26,7 +26,8 @@ import { TopBar } from "../organisms/TopBar"
 export const HomePage = () => {
     const {
         todoList,
-        toggleTodoListItemStatus,
+        toggleComplete,
+        toggleFlag,
         addTodoListItem,
         deleteTodoListItem
     } = useTodo();
@@ -58,19 +59,19 @@ export const HomePage = () => {
         const getUsers = async () => {
             const data = await getDocs(usersCollectionReference);
             // console.log(data);
-            setUsers(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+            setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         }
         getUsers();
     }, [])
     // addDocument in firestore when click button
     const createUser = async () => {
         // send information to firestore
-        await addDoc(usersCollectionReference, {name: newName, age: Number(newAge)});
+        await addDoc(usersCollectionReference, { name: newName, age: Number(newAge) });
     }
     // identify document id & delete document in firestore when click button
     const updateUser = async (id, age) => {
         const userDoc = doc(db, "users", id);
-        const newFields = {age: age + 1}
+        const newFields = { age: age + 1 }
         await updateDoc(userDoc, newFields);
     }
     // delete document in firestore when click button
@@ -88,7 +89,7 @@ export const HomePage = () => {
                 {/**サイドバー以外 */}
                 <div class="h-full w-full">
                     {/**トップバー */}
-                    <TopBar title={"Home"}/>
+                    <TopBar title={"Home"} />
                     <div class="flex h-full">
                         {/**まとめて画面左側に表示*/}
                         <div class="w-5/12 f-full">
@@ -101,19 +102,21 @@ export const HomePage = () => {
                                 <TodoList
                                     todos={incompletedList}
                                     deleteTodoListItem={deleteTodoListItem}
-                                    toggleTodoListItemStatus={toggleTodoListItemStatus} />
+                                    toggleComplete={toggleComplete}
+                                    toggleFlag={toggleFlag} />
                             </div>
                             {/**完了エリア */}
                             <div class="">
                                 <div class="flex ml-24">
                                     <TodoTitle title="完了したタスク" as="h2" />
                                 </div>
-                                
+
                                 <div class="border border-1 border-white3 ml-24" />
                                 <TodoList
                                     todos={completeList}
                                     deleteTodoListItem={deleteTodoListItem}
-                                    toggleTodoListItemStatus={toggleTodoListItemStatus}
+                                    toggleComplete={toggleComplete}
+                                    toggleFlag={toggleFlag}
                                 />
                             </div>
                         </div>
@@ -142,21 +145,22 @@ export const HomePage = () => {
                             <TodoList
                                 todos={allList}
                                 deleteTodoListItem={deleteTodoListItem}
-                                toggleTodoListItemStatus={toggleTodoListItemStatus}
+                                toggleComplete={toggleComplete}
+                                toggleFlag={toggleFlag}
                             />
                         </div>
                     </div>
                 </div>
             </div>
             {/* firebase */}
-            <input 
-                type="text" 
-                placeholder="Name..." 
-                onChange={(event) => {setNewName(event.target.value)}} />
-            <input 
-                type="number" 
-                placeholder="Age..." 
-                onChange={(event) => {setNewAge(event.target.value)}}/>
+            <input
+                type="text"
+                placeholder="Name..."
+                onChange={(event) => { setNewName(event.target.value) }} />
+            <input
+                type="number"
+                placeholder="Age..."
+                onChange={(event) => { setNewAge(event.target.value) }} />
             <button onClick={createUser}>create user</button>
             {users.map((user) => {
                 return (

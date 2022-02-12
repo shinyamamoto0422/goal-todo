@@ -3,17 +3,18 @@ import { Deadline } from "../molecules/Deadline"
 import { TaskLabels } from "../molecules/TaskLabels"
 import { CompleteMark } from "../molecules/CompleteMark"
 
-export const OneTask = ({ taskName, listName, priorityNum, flag, deadline, complete }) => {
+export const OneTask = ({ todo, toggleComplete, toggleFlag }) => {
+    // 変数はid, taskName, listName, priorityNum, flag, deadline, complete
     //console.log({ taskName, listName, priorityNum, flug, timeText, dateText })
     return (
         <>
             <div class="flex">
-                <CompleteMark complete={complete} />
-                <TaskName>{taskName}</TaskName>
+                <CompleteMark todo={todo} toggleComplete={toggleComplete} />
+                <TaskName>{todo.taskName}</TaskName>
                 <div class="flex h-10">
                     <div class="flex">
-                        <TaskLabels listName={listName} priorityNum={priorityNum} flag={flag} />
-                        <Deadline deadline={deadline} />
+                        <TaskLabels todo={todo} toggleFlag={toggleFlag} />
+                        <Deadline deadline={todo.deadline} />
                     </div>
                 </div>
             </div>
