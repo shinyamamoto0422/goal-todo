@@ -1,5 +1,5 @@
 import { SideBar } from "../templates/SideBar"
-
+import HeatMap from "../atoms/heatMap/heatMap"
 
 export const StatsPage = () => {
     return (
@@ -17,7 +17,7 @@ export const StatsPage = () => {
                     </div>
 
                     <p class="text-9xl text-white1">つみあげ</p>
-
+                    <HeatMap />
                 </div>
 
 

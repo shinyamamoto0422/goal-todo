@@ -32,6 +32,9 @@ const HeatMap = () => {
                         return `color-scale-${value.count}`;
                     }}
                     tooltipDataAttrs={(value) => {
+                        if (!value || !value.date) {
+                            return null;
+                          }
                         // react-tooltipの構成
                         return {
                             "data-tip": `${value.date} has count: ${value.count}`,
