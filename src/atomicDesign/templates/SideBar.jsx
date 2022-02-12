@@ -8,8 +8,8 @@ import { StatsIconWithText } from "../molecules/iconWithText/StatsIconWithText"
 export const SideBar = () => {
     return (
         <>
-            <div class="bg-black1 w-28 h-screen">
-                <div class="ml-2 mr-2 h-auto">
+            <div class="bg-black1 w-28">
+                <div class="ml-2 mr-2">
                     <img class="w-20 h-24 mt-4" src={Logo} alt="logo" />
                     <HomeIconWithText />
                     <MylistIconWithText />
