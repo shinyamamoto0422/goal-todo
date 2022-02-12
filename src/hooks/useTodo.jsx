@@ -56,6 +56,5 @@ export const useTodo = () => {
     toggleTodoListItemStatus,
     addTodoListItem,
     deleteTodoListItem
-  }
-
+  };
 }

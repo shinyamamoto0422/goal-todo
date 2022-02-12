@@ -1,15 +1,26 @@
 import { useState, useEffect, useRef } from "react"
 import { useTodo } from "../../hooks/useTodo"
 
-import { db } from "../../firebase/firebase"
-import { collection, getDocs, onSnapshot } from "firebase/firestore"
+import { users } from "../../libs/userModel"
+
+// database import
+import { db } from '../../firebase/firebase'
+import { 
+    collection,
+    getDocs, 
+    addDoc, 
+    updateDoc, 
+    doc,
+    deleteDoc
+    } from "firebase/firestore"
+import { v4 as uuidv4 } from "uuid"
+// finish database import
 
 import { TodoTitle } from "../../components/TodoTitle"
 import { TodoAdd } from "../../components/TodoAdd"
 import { TodoList } from "../../components/TodoList"
 
 import { SideBar } from "../templates/SideBar"
-
 
 export const HomePage = () => {
     const {
@@ -18,24 +29,6 @@ export const HomePage = () => {
         addTodoListItem,
         deleteTodoListItem
     } = useTodo();
-
-    // ここは実験的にfirebaseのデータベースを使っている　機能していない
-
-    // const [todosData, setTodosData] = useState([]);
-    // useEffect(() => {
-    //     // データベースからデータを取得する
-    //     const todosData = collection(db, "users");
-    //     console.log(todosData);
-    //     // snapshotを取得する
-    //     getDocs(todosData).then((snapshot) => {
-    //         // console.log(snapshot.docs.map((doc) => ({...doc.data()})));
-    //         setTodosData(snapshot.docs.map((doc) => ({ ...doc.data() })));
-    //     });
-    //     // リアルタイムでデータを取得する
-    //     onSnapshot((todosData), (todoData) => {
-    //         setTodosData(todoData.docs.map((doc) => ({ ...doc.data() })));
-    //     });
-    // }, []);
 
     // 入力変数を増やしたら、追加の必要あり
     const taskNameEl = useRef("");
@@ -54,6 +47,38 @@ export const HomePage = () => {
     const incompletedList = todoList.filter(todo => !todo.complete);
     const completeList = todoList.filter(todo => todo.complete);
 
+    // firebase
+    const [newName, setNewName] = useState("");
+    const [newAge, setNewAge] = useState(0);
+
+    const [users, setUsers] = useState([]);
+    const usersCollectionReference = collection(db, "users");
+    useEffect(() => {
+        const getUsers = async () => {
+            const data = await getDocs(usersCollectionReference);
+            // console.log(data);
+            setUsers(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+        }
+        getUsers();
+    }, [])
+    // addDocument in firestore when click button
+    const createUser = async () => {
+        // send information to firestore
+        await addDoc(usersCollectionReference, {name: newName, age: Number(newAge)});
+    }
+    // identify document id & delete document in firestore when click button
+    const updateUser = async (id, age) => {
+        const userDoc = doc(db, "users", id);
+        const newFields = {age: age + 1}
+        await updateDoc(userDoc, newFields);
+    }
+    // delete document in firestore when click button
+    const deleteUser = async (id) => {
+        const userDoc = doc(db, "users", id);
+        await deleteDoc(userDoc);
+    }
+    // finish firebase
+
     return (
         <div class="h-screen w-screen">
             <div class="bg-black2 flex h-full w-full">
@@ -66,6 +91,28 @@ export const HomePage = () => {
                     <div class="">
                         <p class="text-white1 h-12 ml-24 mt-2 w-full text-3xl">Home</p>
                         <div class="border border-1 border-white3" />
+
+                        {/* firebase */}
+                        <input 
+                            type="text" 
+                            placeholder="Name..." 
+                            onChange={(event) => {setNewName(event.target.value)}} />
+                        <input 
+                            type="number" 
+                            placeholder="Age..." 
+                            onChange={(event) => {setNewAge(event.target.value)}}/>
+                        <button onClick={createUser}>create user</button>
+                        {users.map((user) => {
+                            return (
+                                <div key={uuidv4()}>
+                                    <h1>Name: {user.name}</h1>
+                                    <h1>Age: {user.age}</h1>
+                                    <button onClick={() => updateUser(user.id, user.age)}>increase age</button>
+                                    <br />
+                                    <button onClick={() => deleteUser(user.id)}>delete user</button>
+                                </div>
+                            )
+                        })}
                     </div>
 
                     <div class="flex h-full">
@@ -90,6 +137,7 @@ export const HomePage = () => {
                                 <div class="flex ml-24">
                                     <TodoTitle title="完了したタスク" as="h2" />
                                 </div>
+                                
                                 <div class="border border-1 border-white3 ml-24" />
                                 <TodoList
                                     todos={completeList}
