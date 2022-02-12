@@ -14,10 +14,12 @@
     "firebase": "^9.6.6",
     "firebase-functions": "^3.18.0",
     "react": "^17.0.2",
+    "react-calendar-heatmap": "^1.8.1",
     "react-dom": "^17.0.2",
     "react-modern-calendar-datepicker": "^3.1.6",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-tooltip": "^4.2.21",
     "ulid": "^2.3.0",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
