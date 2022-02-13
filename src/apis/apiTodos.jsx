@@ -7,6 +7,10 @@ export const getAllTodosData = async () => {
   return response.data;
   // const todosData = collection(db, "todosData");
   // return todosData;
+
+  // useCollection
+  // value.loadingDataで返す
+  
 };
 
 export const addTodoData = async (todo) => {

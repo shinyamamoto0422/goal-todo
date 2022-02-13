@@ -10,7 +10,9 @@ export const GoogleSignInButton = () => {
     firebase.auth().signInWithPopup(provider)
     .then(user => {
         alert("success : " + user.user.displayName + "さんでログインしました");
+        // homeに遷移する処理をかく
       })
+      // userのidを取得
       .catch(error => {
           alert(error.message);
       });
