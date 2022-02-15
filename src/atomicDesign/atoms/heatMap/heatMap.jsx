@@ -12,18 +12,16 @@ dt.setMonth(dt.getMonth() - 8);
 const HeatMap = () => {
     return (
         <div className="container">
-            <div class="w-2/3">
+            <div class="w-1/2">
                 <CalendarHeatmap
                     // 表示させる月
                     startDate={new Date(dt)}
                     endDate={new Date()}
-
                     values={[
                         { date: "2022-01-03", count: 1 },
                         { date: new Date(), count: 2 },
                         { date: "2021-07-05", count: 4 },
                     ]}
-
                     // color
                     classForValue={(value) => {
                         if (!value) {
@@ -34,7 +32,7 @@ const HeatMap = () => {
                     tooltipDataAttrs={(value) => {
                         if (!value || !value.date) {
                             return null;
-                          }
+                        }
                         // react-tooltipの構成
                         return {
                             "data-tip": `${value.date} has count: ${value.count}`,
