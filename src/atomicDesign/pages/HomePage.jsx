@@ -11,7 +11,8 @@ import {
     addDoc,
     updateDoc,
     doc,
-    deleteDoc
+    deleteDoc,
+    setDoc
 } from "firebase/firestore"
 import { v4 as uuidv4 } from "uuid"
 // finish database import
@@ -19,10 +20,12 @@ import { v4 as uuidv4 } from "uuid"
 import { TodoTitle } from "../../components/TodoTitle"
 import { TodoAdd } from "../../components/TodoAdd"
 import { TodoList } from "../../components/TodoList"
-
 import { SideBar } from "../templates/SideBar"
+import { TopBar } from "../organisms/TopBar"
+import { getAuth } from "firebase/auth"
 import { TopBarText } from "../organisms/TopBarText"
 import { TopBarBorder } from "../../common/TopBarBorder"
+
 
 export const HomePage = () => {
     const {
@@ -49,38 +52,72 @@ export const HomePage = () => {
     const allList = todoList.filter(todo => todo);
     const incompletedList = todoList.filter(todo => !todo.complete);
     const completeList = todoList.filter(todo => todo.complete);
-
-    // firebase
-    const [newName, setNewName] = useState("");
-    const [newAge, setNewAge] = useState(0);
-
-    const [users, setUsers] = useState([]);
-    const usersCollectionReference = collection(db, "users");
-    useEffect(() => {
-        const getUsers = async () => {
-            const data = await getDocs(usersCollectionReference);
-            // console.log(data);
-            setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    /*
+        // firebase
+        const [newName, setNewName] = useState("");
+        const [newAge, setNewAge] = useState(0);
+    
+        const [users, setUsers] = useState([]);
+        const usersCollectionReference = collection(db, "users");
+        useEffect(() => {
+            const getUsers = async () => {
+                const data = await getDocs(usersCollectionReference);
+                // console.log(data);
+                setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+            }
+            getUsers();
+        }, [])
+        // addDocument in firestore when click button
+        const createUser = async () => {
+            // send information to firestore
+            await addDoc(usersCollectionReference, { name: newName, age: Number(newAge) });
         }
-        getUsers();
+        // identify document id & delete document in firestore when click button
+        const updateUser = async (id, age) => {
+            const userDoc = doc(db, "users", id);
+            const newFields = { age: age + 1 }
+            await updateDoc(userDoc, newFields);
+        }
+        // delete document in firestore when click button
+        const deleteUser = async (id) => {
+            const userDoc = doc(db, "users", id);
+            await deleteDoc(userDoc);
+        }
+        // finish firebase
+    */
+    // firebaseテスト (todoList)
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const uid = user.uid;
+    const [newTodo, setNewTodo] = useState("");
+
+    const [todos, setTodos] = useState([]);
+    const todosReference = collection(db, "todos");
+    useEffect(() => {
+        const getTodo = async () => {
+            const data = await getDocs(todosReference);
+            // console.log("data:", data);
+            setTodos(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        }
+        getTodo();
     }, [])
     // addDocument in firestore when click button
-    const createUser = async () => {
+    const createTodo = async () => {
         // send information to firestore
-        await addDoc(usersCollectionReference, { name: newName, age: Number(newAge) });
+        await setDoc(collection(db, "todos", "usertodos", "todo"), { todo: newTodo });
     }
     // identify document id & delete document in firestore when click button
-    const updateUser = async (id, age) => {
-        const userDoc = doc(db, "users", id);
+    const updateTodo = async (id, age) => {
+        const userDoc = doc(db, "todos", id);
         const newFields = { age: age + 1 }
         await updateDoc(userDoc, newFields);
     }
     // delete document in firestore when click button
-    const deleteUser = async (id) => {
-        const userDoc = doc(db, "users", id);
+    const deleteTodo = async (id) => {
+        const userDoc = doc(db, "todos", id);
         await deleteDoc(userDoc);
     }
-    // finish firebase
+    // firebaseテスト finish
 
     return (
         <div class="h-screen w-screen">
@@ -157,21 +194,18 @@ export const HomePage = () => {
             {/* firebase */}
             <input
                 type="text"
-                placeholder="Name..."
-                onChange={(event) => { setNewName(event.target.value) }} />
-            <input
-                type="number"
-                placeholder="Age..."
-                onChange={(event) => { setNewAge(event.target.value) }} />
-            <button onClick={createUser}>create user</button>
-            {users.map((user) => {
+                placeholder="Todo..."
+                onChange={(event) => { setNewTodo(event.target.value) }} />
+            <button onClick={createTodo}>create todo</button>
+            {todos.map((todos) => {
                 return (
                     <div key={uuidv4()}>
-                        <h1>Name: {user.name}</h1>
-                        <h1>Age: {user.age}</h1>
-                        <button onClick={() => updateUser(user.id, user.age)}>increase age</button>
                         <br />
-                        <button onClick={() => deleteUser(user.id)}>delete user</button>
+                        <h1>Name: {todos.todo}</h1>
+                        <br />
+                        <button onClick={() => updateTodo(todos.id, todos.age)}>increase age</button>
+                        <br />
+                        <button onClick={() => deleteTodo(todos.id)}>delete todo</button>
                     </div>
                 )
             })}
