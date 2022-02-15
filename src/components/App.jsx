@@ -7,7 +7,7 @@ import { db } from "../firebase/firebase";
 
 import { HomePage } from "../atomicDesign/pages/HomePage";
 import { MylistPage } from "../atomicDesign/pages/MylistPage";
-import { GoalPage } from "../atomicDesign/pages/GoalPage";
+import { GoalPage } from "../atomicDesign/pages/Goal/GoalPage";
 import { StatsPage } from "../atomicDesign/pages/StatsPage";
 import { AccountPage } from "../atomicDesign/pages/AccountPage";
 import { Page404 } from "../atomicDesign/pages/Page404";
