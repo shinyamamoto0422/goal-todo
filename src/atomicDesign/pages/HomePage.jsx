@@ -20,10 +20,12 @@ import { v4 as uuidv4 } from "uuid"
 import { TodoTitle } from "../../components/TodoTitle"
 import { TodoAdd } from "../../components/TodoAdd"
 import { TodoList } from "../../components/TodoList"
-
 import { SideBar } from "../templates/SideBar"
 import { TopBar } from "../organisms/TopBar"
 import { getAuth } from "firebase/auth"
+import { TopBarText } from "../organisms/TopBarText"
+import { TopBarBorder } from "../../common/TopBarBorder"
+
 
 export const HomePage = () => {
     const {
@@ -125,7 +127,8 @@ export const HomePage = () => {
                 {/**サイドバー以外 */}
                 <div class="h-full w-full">
                     {/**トップバー */}
-                    <TopBar title={"Home"} />
+                    <TopBarText title={"Home"} />
+                    <TopBarBorder/>
                     <div class="flex h-full">
                         {/**まとめて画面左側に表示*/}
                         <div class="w-5/12 f-full">

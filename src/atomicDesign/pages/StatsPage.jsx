@@ -1,6 +1,7 @@
 import { SideBar } from "../templates/SideBar"
 import HeatMap from "../atoms/heatMap/heatMap"
-import { TopBar } from "../organisms/TopBar"
+import { TopBarText } from "../organisms/TopBarText"
+import { TopBarBorder } from "../../common/TopBarBorder"
 
 export const StatsPage = () => {
     return (
@@ -9,11 +10,11 @@ export const StatsPage = () => {
                 {/**サイドバー */}
                 <SideBar />
                 {/**サイドバー以外 */}
-                <div class="h-full">
+                <div class="h-full w-full">
                     {/**トップバー */}
-                    <TopBar title={"Stats"}/>
-                    <p class="text-9xl text-white1">つみあげ</p>
-                    <HeatMap />
+                    <TopBarText title={"Stats"}/>
+                    <TopBarBorder/>
+                    <HeatMap/>
                 </div>
             </div>
         </>
