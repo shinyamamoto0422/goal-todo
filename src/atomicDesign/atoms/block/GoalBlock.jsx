@@ -2,12 +2,16 @@ export const GoalBlock = () => {
   return (
     <>
       <div class="
-      bg-gray1 
-      w-full 
-      h-full
-      rounded-lg
+        bg-gray1
+        rounded-lg
+        w-3/4
+        h-3/4
+        top-1/2
+        left-1/2
+        absolute
+        -translate-x-1/2
+        -translate-y-1/2
       ">
-        <h1>jkkljkljlkajsfoiwej;lkjfalsekjf:aweprj</h1>
       </div>
     </>
   )

@@ -1,5 +1,6 @@
+import { TopBarBorder } from '../../common/TopBarBorder';
 import { GoalBlock } from '../atoms/block/GoalBlock';
-import { TopBar } from '../organisms/TopBar';
+import { TopBarText } from '../organisms/TopBarText';
 import { SideBar } from "../templates/SideBar"
 
 export const GoalPage = () => {
@@ -10,30 +11,16 @@ export const GoalPage = () => {
             bg-gradient-to-t 
             from-blue1 via-blue2 to-blue3 
         ">
-            {/**サイドバー */}
             <SideBar />
-
-                {/**サイドバー以外 */}
-                <div class="h-full w-full">
-                    {/**トップバー */}
-                    <TopBar title={"Goal"}/>
-                    
-                    
-                    <div class="
-                    左右中央揃えはできるけど、上下中央揃えができない
-                    h-4/5
-                    flex justify-center
-                    ">
-                        
-                    <div class="
-                    h-full 
-                    w-3/4
-                    ">
-                    <GoalBlock class="block"/>
-                    </div>
-                    </div>
+            <div class="h-full w-full flex-grow-1">
+                <div class="">
+                    <TopBarText title={"Goal"}/>
+                    <TopBarBorder/>
+                </div>
+                <div class="h-full relative">
+                    <GoalBlock/>
                 </div>
             </div>
-
+        </div>
     )
 };
