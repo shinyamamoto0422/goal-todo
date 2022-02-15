@@ -5,7 +5,7 @@ import { signInWithGoogle } from "../../firebase-hooks/SignInWithGoogle";
 export const StartPage = () => {
     return (
         <>
-            <div 
+            <div
                 class="bg-white-1 w-screen h-screen flex justify-center"
                 onClick={() => signInWithGoogle()}
             >
@@ -13,7 +13,7 @@ export const StartPage = () => {
                     <div class="h-1/6"></div>
                     <img class="" src={StartLogo} alt="startLogo" />
                     <div class="h-20"></div>
-                    <GoogleSignInButton/>
+                    <GoogleSignInButton />
                 </div>
             </div>
         </>
