@@ -21,7 +21,7 @@ import { TodoTitle } from "../../components/TodoTitle"
 import { TodoAdd } from "../../components/TodoAdd"
 import { TodoList } from "../../components/TodoList"
 import { SideBar } from "../templates/SideBar"
-import { TopBar } from "../organisms/TopBar"
+//import { TopBar } from "../organisms/TopBar"
 import { getAuth } from "firebase/auth"
 import { TopBarText } from "../organisms/TopBarText"
 import { TopBarBorder } from "../../common/TopBarBorder"
@@ -128,7 +128,7 @@ export const HomePage = () => {
                 <div class="h-full w-full">
                     {/**トップバー */}
                     <TopBarText title={"Home"} />
-                    <TopBarBorder/>
+                    <TopBarBorder />
                     <div class="flex h-full">
                         {/**まとめて画面左側に表示*/}
                         <div class="w-5/12 f-full">
