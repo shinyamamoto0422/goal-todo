@@ -3,9 +3,15 @@ import { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 
 import * as todoData from "../apis/apiTodos";
+import { addTodoData } from "../apis/apiTodosFirebase";
+import { getAuth } from "firebase/auth";
+import { Timestamp } from "firebase/firestore";
 
 export const useTodo = () => {
   const [todoList, setTodoList] = useState([]);
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const uid = user.uid
 
   useEffect(() => {
     todoData.getAllTodosData().then(todoList => {
@@ -44,21 +50,25 @@ export const useTodo = () => {
   };
 
   // todoの追加、引数は taskName, listName, priorityNum, flag, deadline, complete, todoMemo
-  const addTodoListItem = (taskName, listName, todoMemo) => {
+  const addTodoListItem = async (taskName, listName, todoMemo) => {
+    const id = uuid()
     const newTodoItem = {
       taskName: taskName,
-      id: uuid(),
+      id: id,
       listName: listName,
       priorityNum: "2",
       flag: false,
       deadline: "23:59 2020-01-01",
       complete: false,
-      todoMemo: todoMemo
+      todoMemo: todoMemo,
+      createdAt: Timestamp.now(),
+      uid: uid,
+      updatedAt: "",
+      deletedAt: ""
     };
     console.log(newTodoItem);
-    return todoData.addTodoData(newTodoItem).then((addTodo) => {
-      setTodoList([...todoList, addTodo]);
-    })
+    const addTodo = await addTodoData(id, newTodoItem);
+    setTodoList([...todoList, addTodo]);
   };
 
   const deleteTodoListItem = (id) => {
