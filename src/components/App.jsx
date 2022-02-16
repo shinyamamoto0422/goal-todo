@@ -18,7 +18,7 @@ import { SettingStart } from "../atomicDesign/pages/Goal/SettingStart";
 // --------------------------次にしたいこと----------------------------
 // ・ ログアウト
 // ・ 上の問題点の解決
-// ・ todosとuserの情報を紐付けして、ログイン後にtodosの作成者todosの情報を取得する処理
+// ・ ログイン後にtodosの作成者todosの情報を取得する処理
 // ----------------------------------------------------------------
 const PrivateRoute = () => {
   const auth = getAuth();
@@ -64,7 +64,7 @@ const PrivateRoute = () => {
       // 存在する場合は新規登録しない
       if (docSnap.exists()) {
         console.log("既にユーザーのtodosは存在しています");
-        console.log("todos data:", docSnap.data());
+        console.log("todos user:", docSnap.data());
       } else {
         console.log("No such document!");
         // collectionに渡したい値を設定
@@ -103,7 +103,7 @@ const PrivateRoute = () => {
         <Route path="/home" element={<HomePage />} />
         <Route path="/mylist" element={<MylistPage />} />
         <Route path="/goal" element={<GoalPage />} />
-            <Route path="/goal/settingstart" element={<SettingStart/> } />
+        <Route path="/goal/settingstart" element={<SettingStart />} />
         <Route path="/stats" element={<StatsPage />} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="*" element={<Page404 />} />
