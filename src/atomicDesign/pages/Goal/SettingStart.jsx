@@ -5,7 +5,7 @@ import { TopBarText } from '../../organisms/TopBarText';
 import { SideBar } from "../../templates/SideBar"
 import { ButtonPurple4 } from '../../atoms/button/ButtonPurple4'; 
 
-export const GoalPage = () => {
+export const SettingStart = () => {
     return (
         <div class="
             flex
@@ -21,9 +21,7 @@ export const GoalPage = () => {
                 </div>
                 <div class="h-full relative">
                     <GoalBlock/>
-                    <Link to="/goal/settingstart">
-                        <ButtonPurple4 content={"次へ"} />
-                    </Link>
+                    <h1>SettingStartです</h1>
                     {/* private-router みたいに、user-goalsがあれば、navigateでgoal-seeに飛ばす */}
                     {/* ネストしたやり方　ジャケぇさんの動画見る　versionにち注意 */}
                 </div>
