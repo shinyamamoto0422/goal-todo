@@ -84,7 +84,7 @@ export const HomePage = () => {
             await deleteDoc(userDoc);
         }
         // finish firebase
-    */
+
     // firebaseテスト (todoList)
     const auth = getAuth();
     const user = auth.currentUser;
@@ -118,7 +118,7 @@ export const HomePage = () => {
         await deleteDoc(userDoc);
     }
     // firebaseテスト finish
-
+    */
     return (
         <div class="h-screen w-screen">
             <div class="bg-black2 flex h-full w-full">

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { v4 as uuid } from "uuid";
 
@@ -7,10 +7,6 @@ import * as todoFirebaseData from "../apis/apiTodosFirebase";
 import { getAuth } from "firebase/auth";
 import { Timestamp } from "firebase/firestore";
 
-// ----------------------------注意！-----------------------------------
-// 一時的にapiTodos.jsxからのdataとtodoFirebaseData.jsxからのdataを両方取得しています。
-// 移行後は、Firebaseのデータを取得するように変更してください。
-// -------------------------------------------------------------------
 
 export const useTodo = () => {
   const [todoList, setTodoList] = useState([]);
@@ -19,9 +15,9 @@ export const useTodo = () => {
   const uid = user.uid
 
   useEffect(() => {
-    todoFirebaseData.getAllTodosData().then(todoList => {
-      setTodoList([...todoList]);
-      console.log("todoList:", todoList);
+    todoFirebaseData.GetAllTodosData().then(firebaseTodo => {
+      setTodoList(firebaseTodo);
+      console.log("todoList:", firebaseTodo);
     })
   }, []);
 
@@ -72,7 +68,7 @@ export const useTodo = () => {
       updatedAt: "",
       deletedAt: ""
     };
-    console.log(newTodoItem);
+    // console.log(newTodoItem);
     const addTodo = await todoFirebaseData.addTodoData(id, newTodoItem);
     console.log(addTodo);
     setTodoList([...todoList, addTodo]);
