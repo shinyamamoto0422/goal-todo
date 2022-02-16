@@ -2,14 +2,26 @@ import { useState, useEffect } from "react";
 
 import { v4 as uuid } from "uuid";
 
-import * as todoData from "../apis/apiTodos";
+// import * as todoData from "../apis/apiTodos";
+import * as todoFirebaseData from "../apis/apiTodosFirebase";
+import { getAuth } from "firebase/auth";
+import { Timestamp } from "firebase/firestore";
+
+// ----------------------------注意！-----------------------------------
+// 一時的にapiTodos.jsxからのdataとtodoFirebaseData.jsxからのdataを両方取得しています。
+// 移行後は、Firebaseのデータを取得するように変更してください。
+// -------------------------------------------------------------------
 
 export const useTodo = () => {
   const [todoList, setTodoList] = useState([]);
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const uid = user.uid
 
   useEffect(() => {
-    todoData.getAllTodosData().then(todoList => {
+    todoFirebaseData.getAllTodosData().then(todoList => {
       setTodoList([...todoList]);
+      console.log("todoList:", todoList);
     })
   }, []);
 
@@ -18,7 +30,7 @@ export const useTodo = () => {
     const todoItem = todoList.find(item => item.id === id);
     const newTodoItem = { ...todoItem, complete: !status };
 
-    todoData.updateTodoData(id, newTodoItem).then((updatedTodo) => {
+    todoFirebaseData.updateTodoData(id, newTodoItem).then((updatedTodo) => {
       const newTodoList = todoList.map((item) => {
         return (
           item.id !== updatedTodo.id ? item : updatedTodo
@@ -33,7 +45,7 @@ export const useTodo = () => {
     const todoItem = todoList.find(item => item.id === id);
     const newTodoItem = { ...todoItem, flag: !status };
 
-    todoData.updateTodoData(id, newTodoItem).then((updatedTodo) => {
+    todoFirebaseData.updateTodoData(id, newTodoItem).then((updatedTodo) => {
       const newTodoList = todoList.map((item) => {
         return (
           item.id !== updatedTodo.id ? item : updatedTodo
@@ -44,21 +56,26 @@ export const useTodo = () => {
   };
 
   // todoの追加、引数は taskName, listName, priorityNum, flag, deadline, complete, todoMemo
-  const addTodoListItem = (taskName, listName, todoMemo) => {
+  const addTodoListItem = async (taskName, listName, todoMemo) => {
+    const id = uuid()
     const newTodoItem = {
       taskName: taskName,
-      id: uuid(),
+      id: id,
       listName: listName,
       priorityNum: "2",
       flag: false,
       deadline: "23:59 2020-01-01",
       complete: false,
-      todoMemo: todoMemo
+      todoMemo: todoMemo,
+      createdAt: Timestamp.now(),
+      uid: uid,
+      updatedAt: "",
+      deletedAt: ""
     };
     console.log(newTodoItem);
-    return todoData.addTodoData(newTodoItem).then((addTodo) => {
-      setTodoList([...todoList, addTodo]);
-    })
+    const addTodo = await todoFirebaseData.addTodoData(id, newTodoItem);
+    console.log(addTodo);
+    setTodoList([...todoList, addTodo]);
   };
 
   const deleteTodoListItem = (id) => {

@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid"
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { collection, Timestamp, doc, setDoc, getDoc } from "firebase/firestore";
@@ -23,6 +24,7 @@ const PrivateRoute = () => {
   const auth = getAuth();
   const user = auth.currentUser;
   const collectionRef = collection(db, "users");
+  const todosRef = collection(db, "todos");
   if (user === null) {
     console.log("サインインできていません");
     return (
@@ -55,6 +57,44 @@ const PrivateRoute = () => {
         // collectionRefにnewDoclist(自動IDはuidに設定)を追加
         setDoc(doc(collectionRef, uid), { ...newDoclist });
         console.log("新規ユーザーデータを登録しました");
+      }
+    })
+    // ユーザーのtodosが存在するか確認
+    getDoc(doc(db, "todos", user.uid)).then(docSnap => {
+      // 存在する場合は新規登録しない
+      if (docSnap.exists()) {
+        console.log("既にユーザーのtodosは存在しています");
+        console.log("todos data:", docSnap.data());
+      } else {
+        console.log("No such document!");
+        // collectionに渡したい値を設定
+        const todosUserName = user.displayName;
+        const uid = user.uid
+        const newDoclist = {
+          todosUserName: todosUserName,
+          uid: uid,
+          createdAt: Timestamp.now()
+        };
+        // todosRefにnewDoclist(自動IDはuidに設定)を追加
+        setDoc(doc(todosRef, uid), { ...newDoclist });
+        const id = uuidv4()
+        const firstTask = {
+          complete: false,
+          deadline: "2100",
+          flag: false,
+          id: id,
+          listName: "",
+          priorityNum: 2,
+          taskName: "welcome!!",
+          todoMemo: "this is first task",
+          createdAt: Timestamp.now(),
+          updatedAt: "",
+          deletedAt: "",
+          uid: uid,
+        };
+        // ファーストタスク作成。同時にusertodos(全てのtodo)を作成。
+        setDoc(doc(todosRef, uid, "usertodos", id), firstTask);
+        console.log("新規ユーザーtodosを登録しました");
       }
     })
     console.log("サインインしました")
