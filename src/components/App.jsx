@@ -9,11 +9,21 @@ import { db } from "../firebase/firebase";
 import { HomePage } from "../atomicDesign/pages/HomePage";
 import { MylistPage } from "../atomicDesign/pages/MylistPage";
 import { GoalPage } from "../atomicDesign/pages/Goal/GoalPage";
+    import { Start } from "../atomicDesign/pages/Goal/Start";
+    import { Explain } from "../atomicDesign/pages/Goal/Explain";
+    import { SettingStart } from "../atomicDesign/pages/Goal/SettingStart";
+    import { SettingList } from "../atomicDesign/pages/Goal/SettingList";
+    import { Step1 } from "../atomicDesign/pages/Goal/Step1";
+    import { Step2 } from "../atomicDesign/pages/Goal/Step2";
+    import { Step3 } from "../atomicDesign/pages/Goal/Step3";
+    import { Step4 } from "../atomicDesign/pages/Goal/Step4";
+    import { Step5 } from "../atomicDesign/pages/Goal/Step5";
+    import { WellDone } from "../atomicDesign/pages/Goal/WellDone";
 import { StatsPage } from "../atomicDesign/pages/StatsPage";
 import { AccountPage } from "../atomicDesign/pages/AccountPage";
 import { Page404 } from "../atomicDesign/pages/Page404";
 import { StartPage } from "../atomicDesign/pages/StartPage";
-import { SettingStart } from "../atomicDesign/pages/Goal/SettingStart";
+import { List } from "../atomicDesign/pages/Goal/List";
 
 // --------------------------次にしたいこと----------------------------
 // ・ ログアウト
@@ -103,7 +113,17 @@ const PrivateRoute = () => {
         <Route path="/home" element={<HomePage />} />
         <Route path="/mylist" element={<MylistPage />} />
         <Route path="/goal" element={<GoalPage />} />
-            <Route path="/goal/settingstart" element={<SettingStart/> } />
+            <Route path="/goal/list" element={<List />} />
+            <Route path="/goal/start" element={<Start/> } />
+            <Route path="/goal/explain" element={<Explain/>} />
+            <Route path="/goal/setting-start" element={<SettingStart/>}/>
+            <Route path="/goal/setting-list" element={<SettingList/>}/>
+            <Route path="/goal/step1-5" element={<Step1/>}/>
+            <Route path="/goal/step2-5" element={<Step2/>}/>
+            <Route path="/goal/step3-5" element={<Step3/>}/>
+            <Route path="/goal/step4-5" element={<Step4/>}/>
+            <Route path="/goal/step5-5" element={<Step5/>}/>
+            <Route path="/goal/well-done" element={<WellDone/>}/>
         <Route path="/stats" element={<StatsPage />} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="*" element={<Page404 />} />
