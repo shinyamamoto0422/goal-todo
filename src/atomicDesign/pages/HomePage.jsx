@@ -192,7 +192,7 @@ export const HomePage = () => {
                 </div>
             </div>
             {/* firebase */}
-            <input
+            {/* <input
                 type="text"
                 placeholder="Todo..."
                 onChange={(event) => { setNewTodo(event.target.value) }} />
@@ -208,7 +208,7 @@ export const HomePage = () => {
                         <button onClick={() => deleteTodo(todos.id)}>delete todo</button>
                     </div>
                 )
-            })}
+            })} */}
         </div>
     )
 }

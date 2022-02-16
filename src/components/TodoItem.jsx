@@ -6,7 +6,12 @@ export const TodoItem = ({ todo, deleteTodoListItem, toggleComplete, toggleFlag 
   console.log("todo=" + todo)
   return (
     <>
-      <OneTask todo={todo} toggleComplete={toggleComplete} toggleFlag={toggleFlag} />
+      <OneTask
+        todo={todo}
+        deleteTodoListItem={deleteTodoListItem}
+        toggleComplete={toggleComplete}
+        toggleFlag={toggleFlag}
+      />
       {/** <li class="text-white1">
         {todo.content}
         <NameTag  tag={todo.tag}/>

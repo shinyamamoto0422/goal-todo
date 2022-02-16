@@ -2,10 +2,15 @@ import { useState, useEffect } from "react";
 
 import { v4 as uuid } from "uuid";
 
-import * as todoData from "../apis/apiTodos";
-import { addTodoData } from "../apis/apiTodosFirebase";
+// import * as todoData from "../apis/apiTodos";
+import * as todoFirebaseData from "../apis/apiTodosFirebase";
 import { getAuth } from "firebase/auth";
 import { Timestamp } from "firebase/firestore";
+
+// ----------------------------注意！-----------------------------------
+// 一時的にapiTodos.jsxからのdataとtodoFirebaseData.jsxからのdataを両方取得しています。
+// 移行後は、Firebaseのデータを取得するように変更してください。
+// -------------------------------------------------------------------
 
 export const useTodo = () => {
   const [todoList, setTodoList] = useState([]);
@@ -14,8 +19,9 @@ export const useTodo = () => {
   const uid = user.uid
 
   useEffect(() => {
-    todoData.getAllTodosData().then(todoList => {
+    todoFirebaseData.getAllTodosData().then(todoList => {
       setTodoList([...todoList]);
+      console.log("todoList:", todoList);
     })
   }, []);
 
@@ -24,7 +30,7 @@ export const useTodo = () => {
     const todoItem = todoList.find(item => item.id === id);
     const newTodoItem = { ...todoItem, complete: !status };
 
-    todoData.updateTodoData(id, newTodoItem).then((updatedTodo) => {
+    todoFirebaseData.updateTodoData(id, newTodoItem).then((updatedTodo) => {
       const newTodoList = todoList.map((item) => {
         return (
           item.id !== updatedTodo.id ? item : updatedTodo
@@ -39,7 +45,7 @@ export const useTodo = () => {
     const todoItem = todoList.find(item => item.id === id);
     const newTodoItem = { ...todoItem, flag: !status };
 
-    todoData.updateTodoData(id, newTodoItem).then((updatedTodo) => {
+    todoFirebaseData.updateTodoData(id, newTodoItem).then((updatedTodo) => {
       const newTodoList = todoList.map((item) => {
         return (
           item.id !== updatedTodo.id ? item : updatedTodo
@@ -67,7 +73,8 @@ export const useTodo = () => {
       deletedAt: ""
     };
     console.log(newTodoItem);
-    const addTodo = await addTodoData(id, newTodoItem);
+    const addTodo = await todoFirebaseData.addTodoData(id, newTodoItem);
+    console.log(addTodo);
     setTodoList([...todoList, addTodo]);
   };
 

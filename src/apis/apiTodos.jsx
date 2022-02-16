@@ -18,10 +18,10 @@ export const addTodoData = async (todo) => {
   return response.data;
 };
 */
-export const deleteTodoData = async (id, todo) => {
-  const response = await axios.delete(`${todoDataUrl}/${id}`);
-  return response.data;
-}
+// export const deleteTodoData = async (id, todo) => {
+//   const response = await axios.delete(`${todoDataUrl}/${id}`);
+//   return response.data;
+// }
 
 export const updateTodoData = async (id, todo) => {
   const response = await axios.put(`${todoDataUrl}/${id}`, todo);
