@@ -3,7 +3,7 @@ import { collection, doc, setDoc, deleteDoc, updateDoc, getDoc, getDocs, query, 
 import { useState } from "react";
 import { db } from "../firebase/firebase";
 
-export const GetAllTodosData = async () => {
+export const getAllTodosData = async () => {
     /*
     // onSnapshotが分からない!!
     const [alltodos, setAlltodos] = useState([]);
@@ -43,8 +43,9 @@ export const addTodoData = async (id, todo) => {
     const user = auth.currentUser;
     const uid = user.uid
     const todosRef = collection(db, "todos");
-    const response = await setDoc(doc(todosRef, uid, "usertodos", id), todo);
-    return response.data;
+    await setDoc(doc(todosRef, uid, "usertodos", id), todo);
+    //const response = 
+    //return response.data();
 };
 
 
@@ -55,8 +56,9 @@ export const deleteTodoData = async (id, todo) => {
     const user = auth.currentUser;
     const uid = user.uid
     const todosRef = collection(db, "todos");
-    const response = await deleteDoc(doc(todosRef, uid, "usertodos", id));
-    return response.data;
+    await deleteDoc(doc(todosRef, uid, "usertodos", id));
+    //const response = 
+    //return response.data();
 }
 
 export const updateTodoData = async (id, todo) => {
@@ -66,6 +68,7 @@ export const updateTodoData = async (id, todo) => {
     const user = auth.currentUser;
     const uid = user.uid
     const todosRef = collection(db, "todos");
-    const response = await updateDoc(doc(todosRef, uid, "usertodos", id), todo);
-    return response.data;
+    await updateDoc(doc(todosRef, uid, "usertodos", id), todo);
+    //const response = 
+    //return response;
 }
