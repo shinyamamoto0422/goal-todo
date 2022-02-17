@@ -27,6 +27,7 @@ module.exports = {
         fuchsia: colors.fuchsia,
         pink: colors.pink,
         rose: colors.rose,
+        white0: '#F2F2F2',
         white1: '#d8dee4',
         white2: '#9e9c9e',
         white3: '#565656',

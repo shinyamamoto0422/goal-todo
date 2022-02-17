@@ -129,11 +129,13 @@ export const HomePage = () => {
                 {/**サイドバー以外 */}
                 <div class="h-full w-full">
                     {/**トップバー */}
-                    <TopBarText title={"Home"} />
-                    <TopBarBorder />
+                    <div>
+                        <TopBarText title={"Home"} />
+                        <TopBarBorder />
+                    </div>
                     <div class="flex h-full">
                         {/**まとめて画面左側に表示*/}
-                        <div class="w-5/12 f-full">
+                        <div class="w-5/12  ">
                             {/**未完了エリア */}
                             <div class="">
                                 <div class="flex ml-24">
@@ -164,7 +166,7 @@ export const HomePage = () => {
                         <div class="border border-1 border-white3" />
 
                         {/**入力エリア 画面右側に表示 */}
-                        <div class="w-full h-full bg-black1">
+                        <div class="w-full h-5/6 bg-black1">
                             <br />
                             <div class="flex ml-12">
                                 <TodoTitle title="Todo進捗管理" as="h1" />
