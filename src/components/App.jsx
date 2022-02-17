@@ -24,6 +24,7 @@ import { AccountPage } from "../atomicDesign/pages/AccountPage";
 import { Page404 } from "../atomicDesign/pages/Page404";
 import { StartPage } from "../atomicDesign/pages/StartPage";
 import { List } from "../atomicDesign/pages/Goal/List";
+import { Focus } from "../atomicDesign/pages/Focus/Focus";
 
 // --------------------------次にしたいこと----------------------------
 // ・ ログアウト
@@ -111,6 +112,7 @@ const PrivateRoute = () => {
     return (
       <Routes>
         <Route path="/home" element={<HomePage />} />
+          <Route path="/home/focus" element={<Focus />}/>
         <Route path="/mylist" element={<MylistPage />} />
         <Route path="/goal" element={<GoalPage />} />
         <Route path="/goal/settingstart" element={<SettingStart />} />
