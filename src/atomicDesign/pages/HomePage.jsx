@@ -25,6 +25,8 @@ import { SideBar } from "../templates/SideBar"
 import { getAuth } from "firebase/auth"
 import { TopBarText } from "../organisms/TopBarText"
 import { TopBarBorder } from "../../common/TopBarBorder"
+import { ButtonPurple4 } from "../../atomicDesign/atoms/button/ButtonPurple4";
+import { Link } from "react-router-dom"
 
 
 export const HomePage = () => {
@@ -175,8 +177,10 @@ export const HomePage = () => {
                                 todoMemoEl={todoMemoEl}
                                 handleAddTodoListItem={handleAddTodoListItem}
                             />
+                            <Link to="/home/focus">
+                                <ButtonPurple4 content="集中モード"/>
+                            </Link>
                             <br />
-
                             <div class="flex ml-24">
                                 <TodoTitle title={"すべてのタスク"} as="h2" />
                             </div>
