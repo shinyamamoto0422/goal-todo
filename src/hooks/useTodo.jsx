@@ -15,7 +15,7 @@ export const useTodo = () => {
   const uid = user.uid
 
   useEffect(() => {
-    todoFirebaseData.GetAllTodosData().then(firebaseTodo => {
+    todoFirebaseData.getAllTodosData().then(firebaseTodo => {
       setTodoList(firebaseTodo);
       console.log("todoList:", firebaseTodo);
     })
@@ -23,36 +23,38 @@ export const useTodo = () => {
 
   // 完了切り替え関数
   const toggleComplete = (id, status) => {
+    const newTodoList = [];
     const todoItem = todoList.find(item => item.id === id);
     const newTodoItem = { ...todoItem, complete: !status };
-
-    todoFirebaseData.updateTodoData(id, newTodoItem).then((updatedTodo) => {
-      const newTodoList = todoList.map((item) => {
-        return (
-          item.id !== updatedTodo.id ? item : updatedTodo
-        );
-      })
-      setTodoList(newTodoList);
-    });
+    todoFirebaseData.updateTodoData(id, newTodoItem)
+    todoList.map((todo) => {
+      if (todo.id !== newTodoItem.id) {
+        newTodoList.push(todo)
+      } else {
+        newTodoList.push(newTodoItem)
+      }
+    })
+    setTodoList(newTodoList);
   };
 
   // フラグ切り替え関数
   const toggleFlag = (id, status) => {
+    const newTodoList = [];
     const todoItem = todoList.find(item => item.id === id);
     const newTodoItem = { ...todoItem, flag: !status };
-
-    todoFirebaseData.updateTodoData(id, newTodoItem).then((updatedTodo) => {
-      const newTodoList = todoList.map((item) => {
-        return (
-          item.id !== updatedTodo.id ? item : updatedTodo
-        );
-      })
-      setTodoList(newTodoList);
-    });
+    todoFirebaseData.updateTodoData(id, newTodoItem)
+    todoList.map((todo) => {
+      if (todo.id !== newTodoItem.id) {
+        newTodoList.push(todo)
+      } else {
+        newTodoList.push(newTodoItem)
+      }
+    })
+    setTodoList(newTodoList);
   };
 
   // todoの追加、引数は taskName, listName, priorityNum, flag, deadline, complete, todoMemo
-  const addTodoListItem = async (taskName, listName, todoMemo) => {
+  const addTodoListItem = (taskName, listName, todoMemo) => {
     const id = uuid()
     const newTodoItem = {
       taskName: taskName,
@@ -69,9 +71,8 @@ export const useTodo = () => {
       deletedAt: ""
     };
     // console.log(newTodoItem);
-    const addTodo = await todoFirebaseData.addTodoData(id, newTodoItem);
-    console.log(addTodo);
-    setTodoList([...todoList, addTodo]);
+    todoFirebaseData.addTodoData(id, newTodoItem);
+    setTodoList([...todoList, newTodoItem]);
   };
 
   const deleteTodoListItem = (id) => {
