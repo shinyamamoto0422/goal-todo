@@ -13,32 +13,30 @@ import GoalPerson from '../../../assets/Goal/goals_person.svg';
 
 export const SettingStart = () => {
     return (
-        <div class="
-            flex
-            h-screen
-            bg-gradient-to-t 
-            from-blue1 via-blue2 to-blue3 
-        ">
+        <div class="flex h-screen bg-gradient-to-t from-blue1 via-blue2 to-blue3 ">
             <SideBar />
             <div class="h-full w-full flex-grow-1">
-                <div class="">
+                <div class="h-1/6">
                     <TopBarText title={"Goal"}/>
                     <TopBarBorder/>
                 </div>
-                <div class="h-full relative">
+                <div class="h-5/6 relative">
                     <div class="bg-gray1 rounded-lg w-3/4 h-3/4 top-1/2 left-1/2 absolute -translate-x-1/2 -translate-y-1/2">
                         <p class="text-black1 text-base font-semibold">
-                          あなたが自分の人生で
-                          <br />
-                          達成したいゴールはなんですか？
+                        あなたが自分の人生で
+                        <br />
+                        達成したいゴールはなんですか？
                         </p>
                         <img src={GoalImage} alt="GoalImage" />
                         <img src={CheckCircle} alt="CheckCircle" />
                         <img src={GoalPerson} alt="GoalPerson" />
-                        <Link to="/goal/explain">
+                    </div>
+                    {/* ボタン */}
+                    <div class="block">
+                        <Link class="block" to="/goal/explain">
                             <ButtonPurple4 content={"戻る"} />
                         </Link>
-                        <Link to="/goal/setting-list">
+                        <Link class="block" to="/goal/setting-list">
                             <ButtonPurple4 content={"次へ"} />
                         </Link>
                     </div>
@@ -47,3 +45,5 @@ export const SettingStart = () => {
         </div>
     )
 };
+
+// 

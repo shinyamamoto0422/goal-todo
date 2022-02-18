@@ -30,7 +30,7 @@ export const SettingList = () => {
                         <p class="text-black1 text-base font-semibold">一連の流れ</p>
                         <img src={BookPoint} alt="BookPoint" />
                         <img src={Leaf} alt="Leaf" />
-                        <img src={Note} alt="Note" />
+                        {/* <img src={Note} alt="Note" /> */}
                         <img src={Women} alt="Women" />
                         <Link to="/goal/setting-start">
                             <ButtonPurple4 content={"戻る"} />

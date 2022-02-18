@@ -18,12 +18,12 @@ export const Explain = () => {
         ">
             <SideBar />
             <div class="h-full w-full flex-grow-1">
-                <div class="">
+                <div class="1/6">
                     <TopBarText title={"Goal"}/>
                     <TopBarBorder/>
                 </div>
-                <div class="h-full relative">
-                    <div class="bg-gray1 rounded-lg w-3/4 h-3/4 top-1/2 left-1/2 absolute -translate-x-1/2 -translate-y-1/2">
+                <div class="h-5/6 relative">
+                    <div class="bg-gray1 rounded-lg w-3/4 h-5/6 top-1/2 left-1/2 absolute -translate-x-1/2 -translate-y-1/2">
                         <img src={CheckCircle} alt="CheckCircle" />
                         <p class="text-black1 text-base font-medium">人のやる気・元気というのはどこから生まれてくると思いますか？</p>
                         <p class="text-black1 text-base font-medium">そもそも、やる気というのは存在せず、取り巻く環境に依存する。</p>
