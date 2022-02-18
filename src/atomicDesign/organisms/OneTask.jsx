@@ -2,6 +2,7 @@ import { TaskName } from "../atoms/TaskName"
 import { Deadline } from "../molecules/Deadline"
 import { TaskLabels } from "../molecules/TaskLabels"
 import { CompleteMark } from "../molecules/CompleteMark"
+import { Timestamp } from "firebase/firestore"
 
 export const OneTask = ({ todo, toggleComplete, toggleFlag }) => {
     // 変数はid, taskName, listName, priorityNum, flag, deadline, complete

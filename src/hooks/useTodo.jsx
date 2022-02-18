@@ -25,7 +25,7 @@ export const useTodo = () => {
   const toggleComplete = (id, status) => {
     const newTodoList = [];
     const todoItem = todoList.find(item => item.id === id);
-    const newTodoItem = { ...todoItem, complete: !status };
+    const newTodoItem = { ...todoItem, complete: !status, updatedAt: Timestamp.now() };
     todoFirebaseData.updateTodoData(id, newTodoItem)
     todoList.map((todo) => {
       if (todo.id !== newTodoItem.id) {
@@ -41,7 +41,7 @@ export const useTodo = () => {
   const toggleFlag = (id, status) => {
     const newTodoList = [];
     const todoItem = todoList.find(item => item.id === id);
-    const newTodoItem = { ...todoItem, flag: !status };
+    const newTodoItem = { ...todoItem, flag: !status, updatedAt: Timestamp.now() };
     todoFirebaseData.updateTodoData(id, newTodoItem)
     todoList.map((todo) => {
       if (todo.id !== newTodoItem.id) {
@@ -54,7 +54,7 @@ export const useTodo = () => {
   };
 
   // todoの追加、引数は taskName, listName, priorityNum, flag, deadline, complete, todoMemo
-  const addTodoListItem = (taskName, listName, todoMemo) => {
+  const addTodoListItem = (taskName, listName, todoMemo, deadline) => {
     const id = uuid()
     const newTodoItem = {
       taskName: taskName,
@@ -62,7 +62,7 @@ export const useTodo = () => {
       listName: listName,
       priorityNum: "2",
       flag: false,
-      deadline: "23:59 2020-01-01",
+      deadline: "2023-12-31 23:59",
       complete: false,
       todoMemo: todoMemo,
       createdAt: Timestamp.now(),
