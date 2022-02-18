@@ -68,13 +68,11 @@ export const HomePage = () => {
                 {/**サイドバー以外 */}
                 <div class="h-full w-full">
                     {/**トップバー */}
-                    <div>
-                        <TopBarText title={"Home"} />
-                        <TopBarBorder />
-                    </div>
+                    <TopBarText title={"Home"} />
+                    <TopBarBorder />
                     <div class="flex h-full">
                         {/**まとめて画面左側に表示*/}
-                        <div class="w-5/12  ">
+                        <div class="w-5/12 f-full">
                             {/**未完了エリア */}
                             <div class="">
                                 <div class="flex ml-24">
@@ -105,7 +103,6 @@ export const HomePage = () => {
 
                         {/**入力エリア 画面右側に表示 */}
                         <div class="w-full h-full bg-black1">
-                        <div class="w-full h-5/6 bg-black1">
                             {/* ここも追加関係、入力変数を増やしたらここも追加の必要あり */}
                             <TodoAdd
                                 taskNameEl={taskNameEl}
