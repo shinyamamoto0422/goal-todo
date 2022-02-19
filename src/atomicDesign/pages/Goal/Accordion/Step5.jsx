@@ -1,29 +1,28 @@
 import { useState, useRef } from 'react';
 import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/outline';
-import { doc, setDoc } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
-import { db } from '../../../../firebase/firebase';
 
-export const Step5 = () => {
-  // const auth = getAuth();
-  // const user = auth.currentUser;
-  // const id = user.uid;
-  // const goalRef = doc(db, "goals", id);
-  // console.log("goalRef:", goalRef);
-
+export const Step5 = ({ goal, updateGoal }) => {
   const [isActive, setIsActive] = useState(false);
   const [ color, setColor ] = useState("bg-white1 hover:bg-white2");
   const [ textColor, setTextColor ] = useState("text-black1");
 
   const [lifeGoal, setLifeGoal] = useState("");
 
-  const LifeGoalEl = useRef("");
+  // 注意！！！ LifeGoalEl1 と LifeGoalEl2 は機能していません。
+  // 本当はroutineが三つであれば、決定を押した時に、storeにroutine1, routine2, routine3を追加するようにします。
+  const LifeGoalEl1 = useRef("");
+  const LifeGoalEl2 = useRef("");
+  const LifeGoalEl3 = useRef("");
   const handleOnclickAddLifeGoal = () => {
-    // if ( LifeGoalEl.current.value === "") return;
-    // const newLifeGoal = [...lifeGoal, LifeGoalEl.current.value];
-    // setLifeGoal(newLifeGoal);
-    // setDoc(goalRef, { lifeGoal: LifeGoalEl.current.value, uid: id });
-    // LifeGoalEl.current.value = "";
+    if ( LifeGoalEl1.current.value === "" 
+    || LifeGoalEl2.current.value === "" 
+    || LifeGoalEl3.current.value === "") return;
+    updateGoal(goal.id, LifeGoalEl1.current.value);
+    updateGoal(goal.id, LifeGoalEl2.current.value);
+    updateGoal(goal.id, LifeGoalEl3.current.value);
+    LifeGoalEl1.current.value = "";
+    LifeGoalEl2.current.value = "";
+    LifeGoalEl3.current.value = "";
   };
 
   return (
@@ -58,9 +57,9 @@ export const Step5 = () => {
           >
             <div class="h-full flex flex-col justify-center items-center">
               <p class="text-black1 text-md font-semibold text-center">最後に、目標に一歩づつ近づくために<br/>習慣化すること（ルーティン行動）を<br/>3つ上げましょう！</p>
-              <input ref={LifeGoalEl} placeholder={""} type="text" class="w-3/4 h-8 mb-1 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>
-              <input ref={LifeGoalEl} placeholder={""} type="text" class="w-3/4 h-8 mb-1 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>
-              <input ref={LifeGoalEl} placeholder={""} type="text" class="w-3/4 h-8 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>
+              <input ref={LifeGoalEl1} placeholder={""} type="text" class="w-3/4 h-8 mb-1 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>
+              <input ref={LifeGoalEl2} placeholder={""} type="text" class="w-3/4 h-8 mb-1 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>
+              <input ref={LifeGoalEl3} placeholder={""} type="text" class="w-3/4 h-8 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>
             </div>
             <div class="absolute bottom-2 w-full text-center">
               <button 

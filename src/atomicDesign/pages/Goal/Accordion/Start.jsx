@@ -44,8 +44,12 @@ export const Start = () => {
               <button 
                 class="bg-purple4 hover:bg-purple3 text-white1 font-bold py-2 px-5 rounded-2xl" 
               >
+                {/* 注意！！
+                ボタンをクリックすると、step1が表示されるようにする。ただ、今はできていない
+                */}
                 スタートする
               </button>
+              <p>まだ機能しません。左を使ってくだいさい！</p>
             </div>
           </div>
         </div>

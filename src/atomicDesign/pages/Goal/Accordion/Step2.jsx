@@ -1,30 +1,24 @@
 import { useState, useRef } from 'react';
 import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/outline';
-import { doc, setDoc } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
-import { db } from '../../../../firebase/firebase';
 
-export const Step2 = () => {
-  // const auth = getAuth();
-  // const user = auth.currentUser;
-  // const id = user.uid;
-  // const goalRef = doc(db, "goals", id);
-  // console.log("goalRef:", goalRef);
-
+export const Step2 = ({ goal, updateGoal }) => {
   const [isActive, setIsActive] = useState(false);
   const [ color, setColor ] = useState("bg-white1 hover:bg-white2");
   const [ textColor, setTextColor ] = useState("text-black1");
 
   const [lifeGoal, setLifeGoal] = useState("");
 
-  const LifeGoalEl = useRef("");
+  const LifeGoalEl1 = useRef("");
   const handleOnclickAddLifeGoal = () => {
-    // if ( LifeGoalEl.current.value === "") return;
-    // const newLifeGoal = [...lifeGoal, LifeGoalEl.current.value];
-    // setLifeGoal(newLifeGoal);
-    // setDoc(goalRef, { lifeGoal: LifeGoalEl.current.value, uid: id });
-    // LifeGoalEl.current.value = "";
+    if ( LifeGoalEl1.current.value === "") return;
+    updateGoal(goal.id, LifeGoalEl1.current.value);
+    console.log(LifeGoalEl1.current.value);
+    LifeGoalEl1.current.value = "";
   };
+
+  const handleOnClickAddInput = () => {
+    // 押すと、inputを追加する関数
+  }
 
   return (
     <div>
@@ -57,14 +51,20 @@ export const Step2 = () => {
                       bg-white1 border border-white3 p-1"
           >
             <div class="h-full flex flex-col justify-center items-center">
-              <p class="text-black1 text-md font-semibold text-center mb-5">次に、その夢を叶えた自分を想像してみましょう。<br />どんな感情が湧いていますか？</p>
-              <input ref={LifeGoalEl} placeholder={""} type="text" class="w-3/4 h-8 mb-1 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>
-              <input ref={LifeGoalEl} placeholder={""} type="text" class="w-3/4 h-8 mb-1 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>
-              <input ref={LifeGoalEl} placeholder={""} type="text" class="w-3/4 h-8 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>
+              <p class="text-black1 text-md font-semibold text-center mb-5">
+                次に、その夢を叶えた自分を想像してみましょう。<br />どんな感情が湧いていますか？
+                <button 
+                  class="bg-white2 hover:bg-white3 text-xs  text-white1 py-1 px-2 rounded-xl" 
+                  onClick={handleOnClickAddInput} content={"決定"} >
+                    {/* 注意！！まだ機能しません！ */}
+                  追加
+                </button> 
+              </p>
+              <input ref={LifeGoalEl1} placeholder={""} type="text" class="w-3/4 h-8 mb-1 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>
             </div>
             <div class="absolute bottom-2 w-full text-center">
               <button 
-                class="bg-purple4 hover:bg-purple3 text-white1 font-bold py-2 px-5 rounded-2xl" 
+                class="bg-purple3 hover:bg-purple4 text-white1 font-bold py-2 px-5 rounded-2xl" 
                 onClick={handleOnclickAddLifeGoal} content={"決定"} >
                 決定
               </button> 

@@ -4,26 +4,6 @@ import { useState } from "react";
 import { db } from "../firebase/firebase";
 
 export const getAllTodosData = async () => {
-    /*
-    // onSnapshotが分からない!!
-    const [alltodos, setAlltodos] = useState([]);
-    const auth = getAuth();
-    const user = auth.currentUser;
-    const uid = user.uid;
-    //db, "todos", uid, "usertodos"
-    const todosRef = collection(db, "todos", uid, "usertodos");
-    //const response = await getDocs(todosRef);
-    // リストにまとめてからreturn
-    onSnapshot(todosRef, (response) => {
-        response.forEach((doc) => {
-            console.log(doc.data())
-            //alltodos.push(doc.data());
-            setAlltodos([...doc.data()])
-        })
-    })
-    console.log("alltodos :", alltodos)
-    return alltodos;
-    */
     const alltodos = [];
     const auth = getAuth();
     const user = auth.currentUser;
@@ -44,31 +24,21 @@ export const addTodoData = async (id, todo) => {
     const uid = user.uid
     const todosRef = collection(db, "todos");
     await setDoc(doc(todosRef, uid, "usertodos", id), todo);
-    //const response = 
-    //return response.data();
 };
 
 
 export const deleteTodoData = async (id, todo) => {
-    // const response = await axios.delete(`${todoDataUrl}/${id}`);
-    // return response.data;
     const auth = getAuth();
     const user = auth.currentUser;
     const uid = user.uid
     const todosRef = collection(db, "todos");
     await deleteDoc(doc(todosRef, uid, "usertodos", id));
-    //const response = 
-    //return response.data();
-}
+};
 
 export const updateTodoData = async (id, todo) => {
-    // const response = await axios.put(`${todoDataUrl}/${id}`, todo);
-    // return response.data;
     const auth = getAuth();
     const user = auth.currentUser;
     const uid = user.uid
     const todosRef = collection(db, "todos");
     await updateDoc(doc(todosRef, uid, "usertodos", id), todo);
-    //const response = 
-    //return response;
-}
+};
