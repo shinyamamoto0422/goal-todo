@@ -1,10 +1,8 @@
-import { useState } from 'react';
 // import { Link } from 'react-router-dom';
 import { TopBarBorder } from '../../../common/TopBarBorder';
 import { useGoal } from '../../../hooks/useGoal';
 import { TopBarText } from '../../organisms/TopBarText';
 import { SideBar } from "../../templates/SideBar"
-import { Accordion } from './Accordion';
 import { Start } from './Accordion/Start';
 import { Step1 } from './Accordion/Step1';
 import { Step2 } from './Accordion/Step2';

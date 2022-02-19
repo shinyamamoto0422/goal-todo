@@ -1,19 +1,21 @@
 import { useState, useRef } from 'react';
 import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/outline';
+import Step3Mattering from '../../../../assets/Goal/Step3Mattering.svg';
 
 export const Step3 = ({ goal, updateGoal, step1InputGoal }) => {
   const [isActive, setIsActive] = useState(false);
   const [ color, setColor ] = useState("bg-white1 hover:bg-white2");
   const [ textColor, setTextColor ] = useState("text-black1");
 
-  const [lifeGoal, setLifeGoal] = useState("");
+  const [intermediateGoal, setIntermediateGoal] = useState("");
 
   const LifeGoalEl1 = useRef("");
   const handleOnclickAddLifeGoal = () => {
     if ( LifeGoalEl1.current.value === "") return;
     updateGoal(goal.id, LifeGoalEl1.current.value);
-    console.log(LifeGoalEl1.current.value);
-    LifeGoalEl1.current.value = "";
+    
+    setIntermediateGoal(LifeGoalEl1.current.value);
+    // LifeGoalEl1.current.value = "";
   };
 
   const handleOnClickAddInput = () => {
@@ -44,6 +46,9 @@ export const Step3 = ({ goal, updateGoal, step1InputGoal }) => {
                 }
               </div>
         </div>
+        <div class="text-center">
+                <p class="text-purple4">{intermediateGoal}</p>
+        </div>
       </div>
       {isActive && 
         <div>
@@ -64,6 +69,11 @@ export const Step3 = ({ goal, updateGoal, step1InputGoal }) => {
               </p>
               <input ref={LifeGoalEl1} placeholder={""} type="text" class="w-3/4 h-8 mb-1 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>
             </div>
+
+            <div class="absolute w-1/2 -bottom-0 left-0">
+              <img src={Step3Mattering} alt="matteringLeft" />
+            </div>
+
             <div class="absolute bottom-2 w-full text-center">
               <button 
                 class="bg-purple4 hover:bg-purple3 text-white1 font-bold py-2 px-5 rounded-2xl" 
