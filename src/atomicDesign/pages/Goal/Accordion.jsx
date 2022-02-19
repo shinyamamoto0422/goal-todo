@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/outline';
 import GoalSettingFlag from '../../../assets/Goal/GoalSettingFlag.svg';
 import { ButtonPurple4 } from '../../atoms/button/ButtonPurple4';
-import { list } from 'postcss';
 
 import { doc, setDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
@@ -68,9 +67,6 @@ export const Accordion = ({ index, title, content, placeholder, radius }) => {
             </div>
           </div>
         </div>
-        // 入力が空欄じゃなければ、次に進めるようにする useRefを使う
-        // step1を押したときに次のstep2のisOpenがtrueにする
-        // onClickにstatus
       }
     </div>
   );

@@ -17,7 +17,7 @@ export const useTodo = () => {
   useEffect(() => {
     todoFirebaseData.getAllTodosData().then(firebaseTodo => {
       setTodoList(firebaseTodo);
-      console.log("todoList:", firebaseTodo);
+      // console.log("todoList:", firebaseTodo);
     })
   }, []);
 
