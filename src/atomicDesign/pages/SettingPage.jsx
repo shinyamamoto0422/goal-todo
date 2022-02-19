@@ -17,22 +17,20 @@ export const SettingPage = () => {
                 <div class="h-full w-full">
                     <TopBarText title={"Setting"} />
                     <TopBarBorder />
-                    <div class="flex justify-center">
+                    <div class="flex justify-center text-center">
                         <div class="flex flex-col w-1/3">
-                            <p class="h-10" />
-                            <div class="text-white1 flex justify-center text-2xl">
-                                ログイン中のアカウント
-                            </div>
                             <p class="h-5" />
                             <div class="flex justify-center">
                                 <img class="rounded-full" src={photoURL}  alt="user.photoURL" />
                             </div>
                             <p class="h-5" />
-                            <div class="text-white1 flex justify-center text-xl" >
+                            <p class="text-white1 text-xl" >
                                 {email}
-                            </div>
+                            </p>
                             <p class="h-10" />
+                            <div>
                                 <ButtonPurple4 content={"ログアウト"} />
+                            </div>
                             <p class="h-5" />
                             <Link to="/setting/privacy_policy">
                                 <ButtonPurple4 content={"プライバシーポリシー"} />
