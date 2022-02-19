@@ -37,6 +37,22 @@ export const useTodo = () => {
     setTodoList(newTodoList);
   };
 
+  // 優先度変更関数？？？？
+  const togglePriority = (id, priorityNum) => {
+    const newTodoList = [];
+    const todoItem = todoList.find(item => item.id === id);
+    const newTodoItem = { ...todoItem, priority: priorityNum, updatedAt: Timestamp.now() };
+    todoFirebaseData.updateTodoData(id, newTodoItem)
+    todoList.map((todo) => {
+      if (todo.id !== newTodoItem.id) {
+        newTodoList.push(todo)
+      } else {
+        newTodoList.push(newTodoItem)
+      }
+    })
+    setTodoList(newTodoList);
+  };
+
   // フラグ切り替え関数
   const toggleFlag = (id, status) => {
     const newTodoList = [];
@@ -54,16 +70,16 @@ export const useTodo = () => {
   };
 
   // todoの追加、引数は taskName, listName, priorityNum, flag, deadline, complete, todoMemo
-  const addTodoListItem = (taskName, listName, todoMemo, deadline) => {
+  const addTodoListItem = (taskName, listName, priorityNum, flag, deadline, complete, todoMemo) => {
     const id = uuid()
     const newTodoItem = {
       taskName: taskName,
       id: id,
       listName: listName,
-      priorityNum: "2",
-      flag: false,
-      deadline: "2023-12-31 23:59",
-      complete: false,
+      priorityNum: priorityNum,
+      flag: flag,
+      deadline: deadline,
+      complete: complete,
       todoMemo: todoMemo,
       createdAt: Timestamp.now(),
       uid: uid,
@@ -84,6 +100,7 @@ export const useTodo = () => {
     todoList,
     toggleComplete,
     toggleFlag,
+    togglePriority,
     addTodoListItem,
     deleteTodoListItem
   };
