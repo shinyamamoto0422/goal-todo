@@ -4,7 +4,7 @@ import { TaskLabels } from "../molecules/TaskLabels"
 import { CompleteMark } from "../molecules/CompleteMark"
 import { Timestamp } from "firebase/firestore"
 
-export const OneTask = ({ todo, toggleComplete, toggleFlag }) => {
+export const OneTask = ({ todo, toggleComplete, toggleFlag, setEditModeFlag, setEditTargetTodo }) => {
     // 変数はid, taskName, listName, priorityNum, flag, deadline, complete
     //console.log({ taskName, listName, priorityNum, flug, timeText, dateText })
     return (
@@ -14,7 +14,7 @@ export const OneTask = ({ todo, toggleComplete, toggleFlag }) => {
                 <TaskName>{todo.taskName}</TaskName>
                 <div class="flex h-10">
                     <div class="flex">
-                        <TaskLabels todo={todo} toggleFlag={toggleFlag} />
+                        <TaskLabels todo={todo} toggleFlag={toggleFlag} setEditModeFlag={setEditModeFlag} setEditTargetTodo={setEditTargetTodo} />
                         <Deadline deadline={todo.deadline} />
                     </div>
                 </div>

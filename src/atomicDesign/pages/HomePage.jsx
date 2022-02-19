@@ -37,9 +37,23 @@ export const HomePage = () => {
         toggleFlag,
         togglePriority,
         addTodoListItem,
+        updateTodoListItem,
         deleteTodoListItem
     } = useTodo();
 
+    const [editModeFlag, setEditModeFlag] = useState(false);
+    const [editTargetTodo, setEditTargetTodo] = useState(
+        {
+            taskName: "",
+            id: "",
+            listName: "",
+            priorityNum: 2,
+            flag: false,
+            deadline: "",
+            complete: false,
+            todoMemo: ""
+        }
+    );
     // 入力変数を増やしたら、追加の必要あり
     // todoの追加、引数は taskName, listName, priorityNum, flag, deadline, complete, todoMemo
     const taskNameEl = useRef("");
@@ -65,6 +79,34 @@ export const HomePage = () => {
         setFlag(false);
         deadlineEl.current.value = "";
         todoMemoEl.current.value = "";
+    };
+
+    const editTaskNameEl = useRef("");
+    const editListNameEl = useRef("");
+    const [editPriorityNum, setEditPriorityNum] = useState(2)
+    const [editFlag, setEditFlag] = useState(false)
+    const editDeadlineEl = useRef("");
+    const [editComplete, setEditComplete] = useState(false);
+    const editTodoMemoEl = useRef("");
+    const handleUpdateTodoListItem = () => {
+        if (editTaskNameEl.current.value === "") return;
+        updateTodoListItem(editTargetTodo.id,
+            editTaskNameEl.current.value,
+            editListNameEl.current.value,
+            editPriorityNum,
+            editFlag,
+            editDeadlineEl.current.value,
+            editComplete,
+            editTodoMemoEl.current.value
+        );
+        editTaskNameEl.current.value = "";
+        editListNameEl.current.value = "";
+        setEditPriorityNum("");
+        setEditFlag(false);
+        editDeadlineEl.current.value = "";
+        editTodoMemoEl.current.value = "";
+        setEditModeFlag(false)
+        setEditTargetTodo("");
     };
 
     // todoリストのデータ(作成日でソート)
@@ -96,7 +138,10 @@ export const HomePage = () => {
                                     todos={incompletedList}
                                     deleteTodoListItem={deleteTodoListItem}
                                     toggleComplete={toggleComplete}
-                                    toggleFlag={toggleFlag} />
+                                    toggleFlag={toggleFlag}
+                                    setEditModeFlag={setEditModeFlag}
+                                    setEditTargetTodo={setEditTargetTodo}
+                                />
                             </div>
                             {/**完了エリア */}
                             <div class="">
@@ -109,6 +154,8 @@ export const HomePage = () => {
                                     deleteTodoListItem={deleteTodoListItem}
                                     toggleComplete={toggleComplete}
                                     toggleFlag={toggleFlag}
+                                    setEditModeFlag={setEditModeFlag}
+                                    setEditTargetTodo={setEditTargetTodo}
                                 />
                             </div>
                         </div>
@@ -123,6 +170,19 @@ export const HomePage = () => {
                             todoMemoEl={todoMemoEl}
                             deadlineEl={deadlineEl}
                             handleAddTodoListItem={handleAddTodoListItem}
+                            editModeFlag={editModeFlag}
+
+                            setEditModeFlag={setEditModeFlag}
+
+                            editTargetTodo={editTargetTodo}
+                            handleUpdateTodoListItem={handleUpdateTodoListItem}
+                            editTaskNameEl={editTaskNameEl}
+                            editListNameEl={editListNameEl}
+                            setEditPriorityNum={setEditPriorityNum}
+                            setEditFlag={setEditFlag}
+                            setEditComplete={setEditComplete}
+                            editTodoMemoEl={editTodoMemoEl}
+                            editDeadlineEl={editDeadlineEl}
                         />
                     </div>
                 </div>

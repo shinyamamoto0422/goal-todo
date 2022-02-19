@@ -1,5 +1,5 @@
 import { TodoItem } from "./TodoItem"
-export const TodoList = ({ todos, deleteTodoListItem, toggleComplete, toggleFlag }) => {
+export const TodoList = ({ todos, deleteTodoListItem, toggleComplete, toggleFlag, setEditModeFlag, setEditTargetTodo }) => {
   return (
     <>
       <ul>
@@ -10,6 +10,8 @@ export const TodoList = ({ todos, deleteTodoListItem, toggleComplete, toggleFlag
             deleteTodoListItem={deleteTodoListItem}
             toggleComplete={toggleComplete}
             toggleFlag={toggleFlag}
+            setEditModeFlag={setEditModeFlag}
+            setEditTargetTodo={setEditTargetTodo}
           />
         ))}
       </ul>
