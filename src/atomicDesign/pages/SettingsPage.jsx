@@ -10,9 +10,8 @@ import { SideBar } from "../templates/SideBar"
 const auth = getAuth();
 const user = auth.currentUser;
 const collectionRef = collection(db, "users");
-//firebaseから情報を参照できない（もともとできていた）
-// const email = user.email;
-// const photoURL = user.photoURL;
+const email = user.email;
+const photoURL = user.photoURL;
 
 export const SettingsPage = () => {
     return (
@@ -34,11 +33,11 @@ export const SettingsPage = () => {
                             </div>
                             <p class="h-5" />
                             <div class="flex justify-center">
-                                {/* <img src={photoURL} alt="user.photoURL" /> */}
+                                <img class="rounded-full" src={photoURL} alt="user.photoURL" />
                             </div>
                             <p class="h-5" />
                             <div class="text-white1 flex justify-center text-xl" >
-                                {/* {email} */}
+                                {email}
                             </div>
                             <p class="h-10" />
                             <ButtonPurple4 content={"ログアウト"} />
