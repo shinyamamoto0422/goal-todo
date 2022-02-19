@@ -111,9 +111,9 @@ const PrivateRoute = () => {
     })
     const goalSettingList = [
       "life goal",
-      "feelings",
-      "intermediate goals",
-      "routines",
+      "feelings1",
+      "intermediate goal1",
+      "routine1",
     ];
     // ユーザーのgoalsが存在するか確認
     getDoc(doc(db, "goals", user.uid)).then(docSnap => {

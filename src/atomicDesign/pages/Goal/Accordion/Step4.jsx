@@ -1,15 +1,7 @@
 import { useState, useRef } from 'react';
 import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/outline';
-import { doc, setDoc } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
-import { db } from '../../../../firebase/firebase';
 
-export const Step4 = () => {
-  // const auth = getAuth();
-  // const user = auth.currentUser;
-  // const id = user.uid;
-  // const goalRef = doc(db, "goals", id);
-  // console.log("goalRef:", goalRef);
+export const Step4 = ({ goal, updateGoal }) => {
 
   const [isActive, setIsActive] = useState(false);
   const [ color, setColor ] = useState("bg-white1 hover:bg-white2");
@@ -19,11 +11,10 @@ export const Step4 = () => {
 
   const LifeGoalEl = useRef("");
   const handleOnclickAddLifeGoal = () => {
-    // if ( LifeGoalEl.current.value === "") return;
-    // const newLifeGoal = [...lifeGoal, LifeGoalEl.current.value];
-    // setLifeGoal(newLifeGoal);
-    // setDoc(goalRef, { lifeGoal: LifeGoalEl.current.value, uid: id });
-    // LifeGoalEl.current.value = "";
+    if ( LifeGoalEl.current.value === "") return;
+    updateGoal(goal.id, LifeGoalEl.current.value);
+    console.log(LifeGoalEl.current.value);
+    LifeGoalEl.current.value = "";
   };
 
   return (
@@ -59,8 +50,6 @@ export const Step4 = () => {
             <div class="h-full flex flex-col justify-center items-center">
               <p class="text-black1 text-md font-semibold text-center">面倒ですが、もう一度、中間目標を<br/>『数値化』に着目して練り直しましょう！</p>
               <input ref={LifeGoalEl} placeholder={""} type="text" class="w-3/4 h-8 mb-1 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>
-              <input ref={LifeGoalEl} placeholder={""} type="text" class="w-3/4 h-8 mb-1 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>
-              <input ref={LifeGoalEl} placeholder={""} type="text" class="w-3/4 h-8 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>
             </div>
             <div class="absolute bottom-2 w-full text-center">
               <button 

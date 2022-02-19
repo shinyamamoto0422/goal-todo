@@ -1,15 +1,26 @@
 import { getAuth } from "firebase/auth";
-import { collection, setDoc, doc } from "firebase/firestore";
+import { collection, getDocs, setDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
-// usergoalsのusersettingを取得
+export const getAllGoalData = async () => {
+    const allgoals = [];
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const uid = user.uid;
+    const goalsRef = collection(db, "goals", uid, "usergoals");
+    const response = await getDocs(goalsRef);
+    // リストにまとめてからreturn
+    response.forEach((doc) => {
+        //console.log(doc.data())
+        allgoals.push(doc.data())
+    })
+    return allgoals;
+};
 
-
-// 
-export const addGoalData = async (id, usersetting) => {
+export const updateGoalData = async (id, goal) => {
     const auth = getAuth();
     const user = auth.currentUser;
     const uid = user.uid
     const goalsRef = collection(db, "goals");
-    await setDoc(doc(goalsRef, uid, "usergoals", id), usersetting);
+    await updateDoc(doc(goalsRef, uid, "usergoals", id), goal);
 }
