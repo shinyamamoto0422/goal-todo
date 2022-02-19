@@ -27,6 +27,7 @@ import { TopBarText } from "../organisms/TopBarText"
 import { TopBarBorder } from "../../common/TopBarBorder"
 import { ButtonPurple4 } from "../../atomicDesign/atoms/button/ButtonPurple4";
 import { Link } from "react-router-dom"
+import { HomeRightMenu } from "../templates/HomeRightMenu"
 
 
 export const HomePage = () => {
@@ -34,25 +35,36 @@ export const HomePage = () => {
         todoList,
         toggleComplete,
         toggleFlag,
+        togglePriority,
         addTodoListItem,
         deleteTodoListItem
     } = useTodo();
 
     // 入力変数を増やしたら、追加の必要あり
+    // todoの追加、引数は taskName, listName, priorityNum, flag, deadline, complete, todoMemo
     const taskNameEl = useRef("");
     const listNameEl = useRef("");
-    const todoMemoEl = useRef("");
+    const [priorityNum, setPriorityNum] = useState("2")
+    const [flag, setFlag] = useState(false)
     const deadlineEl = useRef("");
+    const [complete, setComplete] = useState(false);
+    const todoMemoEl = useRef("");
     const handleAddTodoListItem = () => {
         if (taskNameEl.current.value === "") return;
         addTodoListItem(taskNameEl.current.value,
             listNameEl.current.value,
-            todoMemoEl.current.value,
-            deadlineEl.current.value);
+            priorityNum,
+            flag,
+            deadlineEl.current.value,
+            complete,
+            todoMemoEl.current.value
+        );
         taskNameEl.current.value = "";
         listNameEl.current.value = "";
-        todoMemoEl.current.value = "";
+        setPriorityNum("");
+        setFlag(false);
         deadlineEl.current.value = "";
+        todoMemoEl.current.value = "";
     };
 
     // todoリストのデータ(作成日でソート)
@@ -102,33 +114,16 @@ export const HomePage = () => {
                         </div>
                         <div class="border border-1 border-white3" />
 
-                        {/**入力エリア 画面右側に表示 */}
-                        <div class="w-full h-full bg-black1">
-                            {/* ここも追加関係、入力変数を増やしたらここも追加の必要あり */}
-                            <TodoAdd
-                                taskNameEl={taskNameEl}
-                                listNameEl={listNameEl}
-                                todoMemoEl={todoMemoEl}
-                                deadlineEl={deadlineEl}
-                                handleAddTodoListItem={handleAddTodoListItem}
-                            />
-                            <Link to="/home/focus">
-                                <ButtonPurple4 content="集中モード" />
-                            </Link>
-                            <br />
-                            {/*
-                            <div class="flex ml-24">
-                                <TodoTitle title={"すべてのタスク"} as="h2" />
-                            </div>
-                            <div class="border border-1 border-white3 ml-24" />
-                            <TodoList
-                                todos={allList}
-                                deleteTodoListItem={deleteTodoListItem}
-                                toggleComplete={toggleComplete}
-                                toggleFlag={toggleFlag}
-                            />
-                            */}
-                        </div>
+                        <HomeRightMenu
+                            taskNameEl={taskNameEl}
+                            listNameEl={listNameEl}
+                            setPriorityNum={setPriorityNum}
+                            setFlag={setFlag}
+                            setComplete={setComplete}
+                            todoMemoEl={todoMemoEl}
+                            deadlineEl={deadlineEl}
+                            handleAddTodoListItem={handleAddTodoListItem}
+                        />
                     </div>
                 </div>
             </div>
