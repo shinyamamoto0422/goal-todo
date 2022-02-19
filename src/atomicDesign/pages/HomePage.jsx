@@ -59,6 +59,7 @@ export const HomePage = () => {
     const allList = todoList.filter(todo => todo).sort(function (a, b) { return (a.createdAt > b.createdAt ? 1 : -1) });
     const incompletedList = todoList.filter(todo => !todo.complete).sort(function (a, b) { return (a.createdAt > b.createdAt ? 1 : -1) });
     const completeList = todoList.filter(todo => todo.complete).sort(function (a, b) { return (a.createdAt > b.createdAt ? 1 : -1) });
+    // リストの振り分けをして下で、mapで回して表示する
 
     return (
         <div class="h-screen w-screen">

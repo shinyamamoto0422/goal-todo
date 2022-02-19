@@ -6,6 +6,10 @@ import { SideBar } from "../../templates/SideBar"
 import { Accordion } from './Accordion';
 import { Start } from './Accordion/Start';
 import { Step1 } from './Accordion/Step1';
+import { Step2 } from './Accordion/Step2';
+import { Step3 } from './Accordion/Step3';
+import { Step4 } from './Accordion/Step4';
+import { Step5 } from './Accordion/Step5';
 // import { ButtonPurple4 } from '../../atoms/button/ButtonPurple4'; 
 
 export const GoalPage = () => {
@@ -59,9 +63,6 @@ export const GoalPage = () => {
             radius: "rounded-b-md",
         },
     ];
-    const step1Condition = false;
-    
-    // 関数をpropsで渡す
 
     return (
         <div class="
@@ -89,7 +90,10 @@ export const GoalPage = () => {
                         ))} */}
                         <Start />
                         <Step1 />
-                        
+                        <Step2 />
+                        <Step3 />
+                        <Step4 />
+                        <Step5 />
                     </div>
                 </section>
             </div>
