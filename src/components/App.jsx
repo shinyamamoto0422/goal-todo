@@ -116,9 +116,6 @@ const PrivateRoute = () => {
       "routines",
     ];
     // ユーザーのgoalsが存在するか確認
-    goalSettingList.map(() => {
-      
-    })
     getDoc(doc(db, "goals", user.uid)).then(docSnap => {
       if(docSnap.exists()) {
         console.log("既にユーザーのgoalsは存在しています");
