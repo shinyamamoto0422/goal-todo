@@ -1,9 +1,7 @@
-
-
 export const PrivacyPolicyPage = () => {
     return (
-        <>
-            <div class="bg-white-1 pt-20 pb-64 pl-20 pr-20">
+        <div class="bg-black2 text-white1">
+            <div class="pt-20 pb-64 pl-20 pr-20">
                 <div class="text-3xl">
                     プライバシーポリシー
                 </div>
@@ -111,7 +109,7 @@ export const PrivacyPolicyPage = () => {
                 <div class="text-5l">
                     個人情報の取扱に関するお問い合せは下記よりご連絡ください。
                     <p class="h-3" />
-                    電子メール:　inquiry.ratdotl@gmail.com
+                    電子メール:　goalTodo@gmail.com
                 </div>
                 <p class="h-10" />
                 <div class="text-2xl">
@@ -122,6 +120,6 @@ export const PrivacyPolicyPage = () => {
                     2022年2月20日制定 2022年2月20日適用
                 </div>
             </div>
-        </>
+        </div>
     )
 }

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom"
-import { IconAccount } from "../../atoms/icon/IconAccount.jsx"
+import { IconSetting } from "../../atoms/icon/IconSetting.jsx"
 
 export const AccountIconWithText = () => {
   return (
-    <Link to="/account">
+    <Link to="/setting">
       <div class="flex items-center">
-        <IconAccount />
-        <p class="text-lg text-white2 mt-2 ml-1">Account</p>
+        <IconSetting />
+        <p class="text-lg text-white2 mt-2 ml-1">Setting</p>
       </div>
     </Link>
   )
