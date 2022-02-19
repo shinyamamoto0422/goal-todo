@@ -4,6 +4,8 @@ import { TopBarBorder } from '../../../common/TopBarBorder';
 import { TopBarText } from '../../organisms/TopBarText';
 import { SideBar } from "../../templates/SideBar"
 import { Accordion } from './Accordion';
+import { Start } from './Accordion/Start';
+import { Step1 } from './Accordion/Step1';
 // import { ButtonPurple4 } from '../../atoms/button/ButtonPurple4'; 
 
 export const GoalPage = () => {
@@ -57,6 +59,9 @@ export const GoalPage = () => {
             radius: "rounded-b-md",
         },
     ];
+    const step1Condition = false;
+    
+    // 関数をpropsで渡す
 
     return (
         <div class="
@@ -79,9 +84,12 @@ export const GoalPage = () => {
                 <section class="mt-24 h-3/4">
                     <div class="relative h-full">
                         {/* アコーディオンの右側にabsoluteで絶対配置するので、relative消さないで */}
-                        {goalList.map((list, index) => (
+                        {/* {goalList.map((list, index) => (
                             <Accordion index={index} title={list.title} content={list.content} placeholder={list.placeholder} radius={list.radius}/>
-                        ))}
+                        ))} */}
+                        <Start />
+                        <Step1 />
+                        
                     </div>
                 </section>
             </div>

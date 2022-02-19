@@ -36,6 +36,7 @@ const PrivateRoute = () => {
   const user = auth.currentUser;
   const collectionRef = collection(db, "users");
   const todosRef = collection(db, "todos");
+  const goalsRef = collection(db, "goals");
   if (user === null) {
     console.log("サインインできていません");
     return (
@@ -106,6 +107,40 @@ const PrivateRoute = () => {
         // ファーストタスク作成。同時にusertodos(全てのtodo)を作成。
         setDoc(doc(todosRef, uid, "usertodos", id), firstTask);
         console.log("新規ユーザーtodosを登録しました");
+      }
+    })
+    const goalSettingList = [
+      "life goal",
+      "feelings",
+      "intermediate goals",
+      "routines",
+    ];
+    // ユーザーのgoalsが存在するか確認
+    getDoc(doc(db, "goals", user.uid)).then(docSnap => {
+      if(docSnap.exists()) {
+        console.log("既にユーザーのgoalsは存在しています");
+        console.log("goals user:", docSnap.data());
+      } else {
+        // collectionに渡したい値を設定
+        const goalsUserName = user.displayName;
+        const uid = user.uid
+        const newDoclist = {
+          goalsUserName: goalsUserName,
+          uid: uid,
+          createdAt: Timestamp.now()
+        };
+        setDoc(doc(goalsRef, uid), { ...newDoclist });
+        goalSettingList.map((settingName) => {
+          const id = uuidv4();
+        const firstGoal = {
+          complete: false,
+          deadline: "2022/12/31 23:59",
+          goalName: {settingName},
+          id: id,
+          createdAt: Timestamp.now(),
+        };
+        setDoc(doc(goalsRef, uid, "usergoals", id), firstGoal);
+        })
       }
     })
     console.log("サインインしました")
