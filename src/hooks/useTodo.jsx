@@ -42,6 +42,7 @@ export const useTodo = () => {
     const newTodoList = [];
     const todoItem = todoList.find(item => item.id === id);
     const newTodoItem = { ...todoItem, flag: !status, updatedAt: Timestamp.now() };
+    // todoItemがusersetting以外、flag→usersettingに変更、updatedAt:Timestamp.now()はそのまま
     todoFirebaseData.updateTodoData(id, newTodoItem)
     todoList.map((todo) => {
       if (todo.id !== newTodoItem.id) {

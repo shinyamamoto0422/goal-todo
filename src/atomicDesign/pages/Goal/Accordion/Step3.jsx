@@ -4,7 +4,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { db } from '../../../../firebase/firebase';
 
-export const Step2 = () => {
+export const Step3 = () => {
   // const auth = getAuth();
   // const user = auth.currentUser;
   // const id = user.uid;
@@ -39,8 +39,8 @@ export const Step2 = () => {
           <p class="text-purple3 text-xl font-semibold" 
               
           >step</p>
-          <p class={`text-2xl font-semibold mr-1 ${textColor}`}>❷</p>
-          <p class={`text-xl font-medium ${textColor}`}>達成した時の感情をあげる</p>
+          <p class={`text-2xl font-semibold mr-1 ${textColor}`}>❸</p>
+          <p class={`text-xl font-medium ${textColor}`}>目標を細かく分割する</p>
               <div class="absolute right-1">
                 {
                   isActive ? 
@@ -57,7 +57,8 @@ export const Step2 = () => {
                       bg-white1 border border-white3 p-1"
           >
             <div class="h-full flex flex-col justify-center items-center">
-              <p class="text-black1 text-md font-semibold text-center mb-5">次に、その夢を叶えた自分を想像してみましょう。<br />どんな感情が湧いていますか？</p>
+              <p class="text-black1 text-md font-md text-center mb-5">では、❶で掲げた目標を現実的な<br />レベルまで落とし込む作業に入ります。</p>
+              <p class="text-black1 text-md font-semibold text-center">を叶えるために達成しないといけない<br/>中間目標はなんですか？（複数）</p>
               <input ref={LifeGoalEl} placeholder={""} type="text" class="w-3/4 h-8 mb-1 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>
               <input ref={LifeGoalEl} placeholder={""} type="text" class="w-3/4 h-8 mb-1 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>
               <input ref={LifeGoalEl} placeholder={""} type="text" class="w-3/4 h-8 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>

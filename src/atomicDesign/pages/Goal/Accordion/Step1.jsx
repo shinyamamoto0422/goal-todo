@@ -1,14 +1,14 @@
 import { useState, useRef } from 'react';
 import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/outline';
-import { doc, setDoc } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
-import { db } from '../../../../firebase/firebase';
+// import { doc, setDoc } from 'firebase/firestore';
+// import { getAuth } from 'firebase/auth';
+// import { db } from '../../../../firebase/firebase';
 
 export const Step1 = () => {
-  const auth = getAuth();
-  const user = auth.currentUser;
-  const id = user.uid;
-  const goalRef = doc(db, "goals", id);
+  // const auth = getAuth();
+  // const user = auth.currentUser;
+  // const id = user.uid;
+  // const goalRef = doc(db, "goals", id);
 
   const [isActive, setIsActive] = useState(false);
   const [ color, setColor ] = useState("bg-white1 hover:bg-white2");
@@ -18,11 +18,11 @@ export const Step1 = () => {
 
   const LifeGoalEl = useRef("");
   const handleOnclickAddLifeGoal = () => {
-    if ( LifeGoalEl.current.value === "") return;
-    const newLifeGoal = [...lifeGoal, LifeGoalEl.current.value];
-    setLifeGoal(newLifeGoal);
-    setDoc(goalRef, { lifeGoal: LifeGoalEl.current.value, uid: id });
-    LifeGoalEl.current.value = "";
+    // if ( LifeGoalEl.current.value === "") return;
+    // const newLifeGoal = [...lifeGoal, LifeGoalEl.current.value];
+    // setLifeGoal(newLifeGoal);
+    // setDoc(goalRef, { lifeGoal: LifeGoalEl.current.value, uid: id });
+    // LifeGoalEl.current.value = "";
   };
 
   return (

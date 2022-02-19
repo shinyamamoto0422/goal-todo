@@ -135,7 +135,8 @@ const PrivateRoute = () => {
         const firstGoal = {
           complete: false,
           deadline: "2022/12/31 23:59",
-          goalName: {settingName},
+          goalName: settingName,
+          usersetting: "",
           id: id,
           createdAt: Timestamp.now(),
         };
