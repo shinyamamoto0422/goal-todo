@@ -13,11 +13,6 @@ import { Start } from "../atomicDesign/pages/Goal/Start";
 import { Explain } from "../atomicDesign/pages/Goal/Explain";
 import { SettingStart } from "../atomicDesign/pages/Goal/SettingStart";
 import { SettingList } from "../atomicDesign/pages/Goal/SettingList";
-import { Step1 } from "../atomicDesign/pages/Goal/Step1";
-import { Step2 } from "../atomicDesign/pages/Goal/Step2";
-import { Step3 } from "../atomicDesign/pages/Goal/Step3";
-import { Step4 } from "../atomicDesign/pages/Goal/Step4";
-import { Step5 } from "../atomicDesign/pages/Goal/Step5";
 import { WellDone } from "../atomicDesign/pages/Goal/WellDone";
 import { StatsPage } from "../atomicDesign/pages/StatsPage";
 import { AccountPage } from "../atomicDesign/pages/AccountPage";
@@ -157,11 +152,6 @@ const PrivateRoute = () => {
         <Route path="/goal/explain" element={<Explain />} />
         <Route path="/goal/setting-start" element={<SettingStart />} />
         <Route path="/goal/setting-list" element={<SettingList />} />
-        <Route path="/goal/step1-5" element={<Step1 />} />
-        <Route path="/goal/step2-5" element={<Step2 />} />
-        <Route path="/goal/step3-5" element={<Step3 />} />
-        <Route path="/goal/step4-5" element={<Step4 />} />
-        <Route path="/goal/step5-5" element={<Step5 />} />
         <Route path="/goal/well-done" element={<WellDone />} />
         <Route path="/stats" element={<StatsPage />} />
         <Route path="/account" element={<AccountPage />} />

@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/outline';
+import Step4Mattering from "../../../../assets/Goal/Step4Mattering.svg";
 
 export const Step4 = ({ goal, updateGoal }) => {
 
@@ -7,14 +8,15 @@ export const Step4 = ({ goal, updateGoal }) => {
   const [ color, setColor ] = useState("bg-white1 hover:bg-white2");
   const [ textColor, setTextColor ] = useState("text-black1");
 
-  const [lifeGoal, setLifeGoal] = useState("");
+  const [intermediateGoal, setIntermediateGoal] = useState("");
 
   const LifeGoalEl = useRef("");
   const handleOnclickAddLifeGoal = () => {
     if ( LifeGoalEl.current.value === "") return;
     updateGoal(goal.id, LifeGoalEl.current.value);
-    console.log(LifeGoalEl.current.value);
-    LifeGoalEl.current.value = "";
+
+    setIntermediateGoal(LifeGoalEl.current.value);
+    // LifeGoalEl.current.value = "";
   };
 
   return (
@@ -41,6 +43,10 @@ export const Step4 = ({ goal, updateGoal }) => {
                 }
               </div>
         </div>
+
+        <div class="text-center">
+                <p class="text-purple4">{intermediateGoal}</p>
+        </div>
       </div>
       {isActive && 
         <div>
@@ -51,6 +57,11 @@ export const Step4 = ({ goal, updateGoal }) => {
               <p class="text-black1 text-md font-semibold text-center">面倒ですが、もう一度、中間目標を<br/>『数値化』に着目して練り直しましょう！</p>
               <input ref={LifeGoalEl} placeholder={""} type="text" class="w-3/4 h-8 mb-1 border border-white3 rounded-xl bg-white0 focus-text-black1 outline-0"/>
             </div>
+
+            <div class="absolute w-1/2 -bottom-0 right-0">
+              <img src={Step4Mattering} alt="matteringLeft" />
+            </div>
+
             <div class="absolute bottom-2 w-full text-center">
               <button 
                 class="bg-purple4 hover:bg-purple3 text-white1 font-bold py-2 px-5 rounded-2xl" 

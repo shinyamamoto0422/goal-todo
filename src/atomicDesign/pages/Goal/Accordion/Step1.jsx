@@ -1,8 +1,6 @@
 import { useState, useRef } from 'react';
 import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/outline';
-import { collection, setDoc } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
-import { db } from '../../../../firebase/firebase';
+import matteringStep1 from "../../../../assets/Goal/Step1Mattering.svg";
 
 export const Step1 = ({ goal, updateGoal }) => {
   const [isActive, setIsActive] = useState(false);
@@ -16,8 +14,9 @@ export const Step1 = ({ goal, updateGoal }) => {
   const handleOnclickAddLifeGoal = () => {
     if ( LifeGoalEl.current.value === "") return;
     updateGoal(goal.id, LifeGoalEl.current.value);
-    console.log(LifeGoalEl.current.value);
-    LifeGoalEl.current.value = "";
+    
+    setLifeGoal(LifeGoalEl.current.value);
+    // LifeGoalEl.current.value = "";
   };
 
   return (
@@ -44,6 +43,10 @@ export const Step1 = ({ goal, updateGoal }) => {
                 }
               </div>
         </div>
+
+        <div class="text-center">
+                <p class="text-purple4">{lifeGoal}</p>
+        </div>
       </div>
       {isActive && 
         <div>
@@ -54,6 +57,11 @@ export const Step1 = ({ goal, updateGoal }) => {
               <p class="text-black1 text-md font-semibold text-center mb-5">自分の人生で<br />達成したい目標はなんですか？</p>
               <input ref={LifeGoalEl} placeholder={"私が達成したい目標は…"} type="text" class="w-3/4 h-14 border border-white3 rounded-2xl bg-white0 focus-text-black1 outline-0"/>
             </div>
+
+            <div class="absolute w-1/2 -bottom-1 right-0">
+              <img src={matteringStep1} alt="matteringLeft" />
+            </div>
+
             <div class="absolute bottom-2 w-full text-center">
               <button 
                 class="bg-purple4 hover:bg-purple3 text-white1 font-bold py-2 px-5 rounded-2xl" 
