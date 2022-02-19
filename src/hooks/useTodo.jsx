@@ -92,6 +92,34 @@ export const useTodo = () => {
     setTodoList([...todoList, newTodoItem]);
   };
 
+  const updateTodoListItem = (id, taskName, listName, priorityNum, flag, deadline, complete, todoMemo) => {
+    const newTodoList = [];
+    const todoItem = todoList.find(item => item.id === id);
+    const newTodoItem = {
+      taskName: taskName,
+      id: id,
+      listName: listName,
+      priorityNum: priorityNum,
+      flag: flag,
+      deadline: deadline,
+      complete: complete,
+      todoMemo: todoMemo,
+      uid: uid,
+      updatedAt: Timestamp.now(),
+      deletedAt: ""
+    };
+    // console.log(newTodoItem);
+    todoFirebaseData.updateTodoData(id, newTodoItem);
+    todoList.map((todo) => {
+      if (todo.id !== newTodoItem.id) {
+        newTodoList.push(todo)
+      } else {
+        newTodoList.push(newTodoItem)
+      }
+    })
+    setTodoList(newTodoList);
+  };
+
   const deleteTodoListItem = (id) => {
     const newTodoList = todoList.filter(item => item.id !== id);
     setTodoList(newTodoList);
@@ -103,6 +131,7 @@ export const useTodo = () => {
     toggleFlag,
     togglePriority,
     addTodoListItem,
+    updateTodoListItem,
     deleteTodoListItem
   };
 }
