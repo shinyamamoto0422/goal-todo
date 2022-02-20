@@ -34,7 +34,7 @@ const PrivateRoute = () => {
   const todosRef = collection(db, "todos");
   const goalsRef = collection(db, "goals");
   if (user === null) {
-    console.log("サインインできていません");
+    // console.log("サインインできていません");
     return (
       <Routes>
         <Route path="/signin" element={< StartPage />} />
@@ -46,10 +46,10 @@ const PrivateRoute = () => {
     getDoc(doc(db, "users", user.uid)).then(docSnap => {
       // 存在する場合は新規登録しない
       if (docSnap.exists()) {
-        console.log("既にユーザーデータは存在しています");
-        console.log("User data:", docSnap.data());
+        // console.log("既にユーザーデータは存在しています");
+        // console.log("User data:", docSnap.data());
       } else {
-        console.log("No such document!");
+        // console.log("No such document!");
         // collectionに渡したい値を設定
         const displayName = user.displayName;
         const email = user.email;
@@ -64,17 +64,17 @@ const PrivateRoute = () => {
         };
         // collectionRefにnewDoclist(自動IDはuidに設定)を追加
         setDoc(doc(collectionRef, uid), { ...newDoclist });
-        console.log("新規ユーザーデータを登録しました");
+        // console.log("新規ユーザーデータを登録しました");
       }
     })
     // ユーザーのtodosが存在するか確認
     getDoc(doc(db, "todos", user.uid)).then(docSnap => {
       // 存在する場合は新規登録しない
       if (docSnap.exists()) {
-        console.log("既にユーザーのtodosは存在しています");
-        console.log("todos user:", docSnap.data());
+        // console.log("既にユーザーのtodosは存在しています");
+        // console.log("todos user:", docSnap.data());
       } else {
-        console.log("No such document!");
+        // console.log("No such document!");
         // collectionに渡したい値を設定
         const todosUserName = user.displayName;
         const uid = user.uid
@@ -102,7 +102,7 @@ const PrivateRoute = () => {
         };
         // ファーストタスク作成。同時にusertodos(全てのtodo)を作成。
         setDoc(doc(todosRef, uid, "usertodos", id), firstTask);
-        console.log("新規ユーザーtodosを登録しました");
+        // console.log("新規ユーザーtodosを登録しました");
       }
     })
     const goalSettingList = [
@@ -114,8 +114,8 @@ const PrivateRoute = () => {
     // ユーザーのgoalsが存在するか確認
     getDoc(doc(db, "goals", user.uid)).then(docSnap => {
       if(docSnap.exists()) {
-        console.log("既にユーザーのgoalsは存在しています");
-        console.log("goals user:", docSnap.data());
+        // console.log("既にユーザーのgoalsは存在しています");
+        // console.log("goals user:", docSnap.data());
       } else {
         // collectionに渡したい値を設定
         const goalsUserName = user.displayName;
@@ -140,7 +140,7 @@ const PrivateRoute = () => {
         })
       }
     })
-    console.log("サインインしました")
+    // console.log("サインインしました")
     return (
       <Routes>
         <Route path="/home" element={<HomePage />} />

@@ -11,7 +11,6 @@ export const CompleteMark2 = ({ setComplete }) => {
         setComplete(false);
         setTmpComplete(false);
     };
-    //console.log(" now tmpComolete is", tmpComolete)
     if (tmpComplete) {
         return (
             <div class="text-purple4 h-6 w-8 ml-12">

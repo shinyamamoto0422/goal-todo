@@ -11,7 +11,6 @@ export const FlagMarkType2 = ({ setFlag }) => {
         setFlag(false);
         setTmpFlag(false);
     };
-    //console.log(" now tmpFlag is", tmpFlag)
     if (tmpFlag) {
         return (
             <div class="text-purple2">

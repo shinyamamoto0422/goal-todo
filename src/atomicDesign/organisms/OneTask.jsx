@@ -6,7 +6,6 @@ import { Timestamp } from "firebase/firestore"
 
 export const OneTask = ({ todo, toggleComplete, toggleFlag, setEditModeFlag, setEditTargetTodo }) => {
     // 変数はid, taskName, listName, priorityNum, flag, deadline, complete
-    //console.log({ taskName, listName, priorityNum, flug, timeText, dateText })
     return (
         <>
             <div class="flex">
