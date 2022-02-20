@@ -40,7 +40,7 @@ export const HomePage = () => {
         updateTodoListItem,
         deleteTodoListItem
     } = useTodo();
-
+    
     const [editModeFlag, setEditModeFlag] = useState(false);
     const [editTargetTodo, setEditTargetTodo] = useState(
         {
