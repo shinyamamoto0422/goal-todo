@@ -9,7 +9,7 @@ export const useGoal = () => {
   useEffect(() => {
     goalFirebaseData.getAllGoalData().then(firebaseGoal => {
       setGoalList(firebaseGoal);
-      console.log(firebaseGoal);
+      // console.log(firebaseGoal);
     })
   }, []);
 

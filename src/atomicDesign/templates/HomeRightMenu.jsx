@@ -27,9 +27,9 @@ export const HomeRightMenu = ({
     editTodoMemoEl,
     editDeadlineEl
 }) => {
-    console.log("editmode:", editModeFlag)
+    // console.log("editmode:", editModeFlag)
     const closeEditMenu = () => {
-        console.log("close!")
+        // console.log("close!")
         setEditModeFlag(false);
     }
     if (editModeFlag) {

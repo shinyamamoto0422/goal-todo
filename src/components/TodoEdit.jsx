@@ -9,7 +9,7 @@ import { PriorityThree } from '../atomicDesign/molecules/priority/PriorityThree'
 export const TodoEdit = ({ editTaskNameEl, editListNameEl, setEditPriorityNum, setEditFlag, editDeadlineEl, setEditComplete, editTodoMemoEl, handleUpdateTodoListItem, editTargetTodo }) => {
     //const [priorityIsShown, setPriorityIsShown] = useState(false);
     //const [timeValue, setTimeValue] = useState(new Date());
-    console.log(editTargetTodo)
+    // console.log(editTargetTodo)
 
     //----------------------------------------問題点-------------------------------------
     // defaultvalue を設定した場合、１度目の内容が表示されてロックし、２度目以降のtodo内容が表示されない

@@ -5,8 +5,7 @@ import PowerfulWomen from "../../../../assets/Goal/powerfulwomen.svg";
 export const Start = () => {
   const [isActive, setIsActive] = useState(true);
   // const [condition, setCondition] = useState(step1Condition);
-  // console.log(step1Condition);
-  // console.log(condition);
+
   // onClick定義
   return (
     <div>

@@ -11,7 +11,6 @@ export const getAllGoalData = async () => {
     const response = await getDocs(goalsRef);
     // リストにまとめてからreturn
     response.forEach((doc) => {
-        //console.log(doc.data())
         allgoals.push(doc.data())
     })
     return allgoals;

@@ -12,7 +12,6 @@ export const getAllTodosData = async () => {
     const response = await getDocs(todosRef);
     // リストにまとめてからreturn
     response.forEach((doc) => {
-        //console.log(doc.data())
         alltodos.push(doc.data())
     })
     return alltodos;

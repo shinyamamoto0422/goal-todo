@@ -7,15 +7,12 @@ import { useTodo } from "../../../hooks/useTodo"
 export const PriorityThree = ({ setPriorityNum }) => {
   const highButton = () => {
     setPriorityNum(0)
-    console.log("High!")
   };
   const normalButton = () => {
     setPriorityNum(1)
-    console.log("Normal!")
   };
   const lowButton = () => {
     setPriorityNum(2)
-    console.log("Low!")
   };
   return (
     <div>

@@ -2,7 +2,6 @@ import { ChevronRightIcon } from "@heroicons/react/outline"
 
 export const TodoEditButton = ({ todo, setEditModeFlag, setEditTargetTodo }) => {
     const openEditMenu = () => {
-        //console.log(todo)
         setEditModeFlag(true);
         setEditTargetTodo(todo);
     }
