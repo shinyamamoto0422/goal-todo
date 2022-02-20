@@ -36,7 +36,7 @@ export const SettingPage = () => {
                                 <ButtonPurple4 content={"プライバシーポリシー"} />
                             </Link>
                             <p class="h-5" />
-                            <Link to="/home/focus">
+                            <Link to="/setting/terms_of_service">
                                 <ButtonPurple4 content={"利用規約"} />
                             </Link>
                         </div>
